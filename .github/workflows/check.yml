@@ -6,6 +6,10 @@ on:
   schedule:
     - cron: '10 17 * * FRI'
 
+defaults:
+  run:
+    working-directory: jinhe
+
 jobs:
   check-duplication:
     runs-on: ubuntu-latest
