@@ -19,6 +19,7 @@ dev_dependencies:
   flutter_lints:
   dependency_validator:
   flutter_launcher_icons:
+  flutter_native_splash:
   msix:
 
 msix_config:
