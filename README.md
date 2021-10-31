@@ -4,4 +4,4 @@
 
 华东师范大学 非关系型数据存储技术及其应用 2021 秋季学期 实践项目。
 
-设计文档及 issues 等内容位于 [jinhe-bus-routes-server](../../../jinhe-bus-routes-server)。
+文档位于 [jinhe-bus-routes-server](../../../jinhe-bus-routes-server)。
