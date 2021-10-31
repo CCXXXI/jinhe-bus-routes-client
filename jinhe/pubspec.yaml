@@ -20,6 +20,7 @@ dev_dependencies:
   dependency_validator:
   flutter_launcher_icons:
   flutter_native_splash:
+  flutter_app_name:
   msix:
 
 msix_config:
