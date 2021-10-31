@@ -23,6 +23,9 @@ dev_dependencies:
   flutter_app_name:
   msix:
 
+flutter_app_name:
+  name: "金河市公交线路系统"
+
 msix_config:
   display_name: "金河市公交线路系统"
   publisher_display_name: "CCXXXI"
