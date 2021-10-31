@@ -4,6 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:loggy/loggy.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'string.dart';
+
 part 'database.g.dart';
 
 Future<void> initDatabase({
@@ -14,7 +16,7 @@ Future<void> initDatabase({
     final dir = await getApplicationSupportDirectory();
     Hive.init(dir.path);
   } else {
-    await Hive.initFlutter();
+    await Hive.initFlutter(packageName);
   }
 
   Hive.registerAdapter(LogAdapter());
