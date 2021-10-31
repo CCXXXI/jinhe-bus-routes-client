@@ -4,6 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:loggy/loggy.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'string.dart';
+
 part 'database.g.dart';
 
 Future<void> initDatabase({
@@ -20,7 +22,7 @@ Future<void> initDatabase({
   Hive.registerAdapter(LogAdapter());
   Hive.registerAdapter(ThemeAdapter());
 
-  conf = await Hive.openBox('conf');
+  conf = await Hive.openBox('$packageName.conf');
 
   if (clear) await conf.clear();
 
