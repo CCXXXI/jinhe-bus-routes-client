@@ -44,6 +44,7 @@ dev_dependencies:
   hive_generator:
   build_runner:
   quiver:
+  badges:
 
 flutter_app_name:
   name: "金河市公交线路系统"
