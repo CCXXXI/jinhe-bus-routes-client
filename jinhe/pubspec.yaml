@@ -24,6 +24,7 @@ dependencies:
   cookie_jar:
   url_launcher:
   flutter_svg:
+  font_awesome_flutter:
 
 dev_dependencies:
   flutter_test:
