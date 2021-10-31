@@ -43,6 +43,7 @@ dev_dependencies:
   msix:
   hive_generator:
   build_runner:
+  quiver:
 
 flutter_app_name:
   name: "金河市公交线路系统"
