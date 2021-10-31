@@ -31,6 +31,8 @@ dependencies:
   font_awesome_flutter:
   flutter_settings_screens: ">0.3.0"
   sentry_flutter: ">=6.1.0-alpha.2"
+  quiver:
+  badges:
 
 dev_dependencies:
   flutter_test:
@@ -43,8 +45,6 @@ dev_dependencies:
   msix:
   hive_generator:
   build_runner:
-  quiver:
-  badges:
 
 flutter_app_name:
   name: "金河市公交线路系统"
