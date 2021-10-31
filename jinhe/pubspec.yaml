@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   get:
+  hive_flutter:
 
 dev_dependencies:
   flutter_test:
@@ -23,6 +24,8 @@ dev_dependencies:
   flutter_native_splash:
   flutter_app_name:
   msix:
+  hive_generator:
+  build_runner:
 
 flutter_app_name:
   name: "金河市公交线路系统"
