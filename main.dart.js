@@ -22451,7 +22451,7 @@ case 4:return A.G(null,r)}})
 return A.H($async$I0,r)},
 auF(a){var s=0,r=A.I(t.H)
 var $async$auF=A.C(function(b,c){if(b===1)return A.F(c,r)
-while(true)switch(s){case 0:A.n2("Global Loggy",t.N9).ok(B.cD,"release: io.github.ccxxxi.jinhe@0.2.1+3",null,null)
+while(true)switch(s){case 0:A.n2("Global Loggy",t.N9).ok(B.cD,"release: io.github.ccxxxi.jinhe@0.2.2+4",null,null)
 $.mt().vp(new A.auG())
 s=2
 return A.K(A.PS(new A.auH(),new A.auI(a)),$async$auF)
@@ -75410,7 +75410,7 @@ A.auH.prototype={
 $1(a){a.a="https://85129d39be5542c4b1a6391f906006c2@o996799.ingest.sentry.io/6042560"
 a.y1=1
 a.ry=!0
-a.db="io.github.ccxxxi.jinhe@0.2.1+3"
+a.db="io.github.ccxxxi.jinhe@0.2.2+4"
 return a},
 $S:484}
 A.auI.prototype={
@@ -75447,14 +75447,14 @@ s=2
 return A.K(q.tZ(),$async$rS)
 case 2:p=b
 o.sp(0,p==null?"":p)
-if(q.gF9())A.jP($.aK(),"\u53d1\u73b0\u65b0\u7248\u672c","0.2.1 \u2192 "+A.d(o.gp(o)),t.z)
+if(q.gF9())A.jP($.aK(),"\u53d1\u73b0\u65b0\u7248\u672c","0.2.2 \u2192 "+A.d(o.gp(o)),t.z)
 return A.G(null,r)}})
 return A.H($async$rS,r)},
 gF9(){var s,r,q=this.db,p=q.gp(q)
 if(p==null||p.length===0)return!1
 q=t.s
 s=t.SR
-for(q=A.aIY(A.b([new A.W(A.b(p.split("."),q),A.aHW(),s),new A.W(A.b("0.2.1".split("."),q),A.aHW(),s)],t.hX),t.S),q=new A.cm(q.a(),A.p(q).h("cm<1>"));q.q();){s=q.gD(q)
+for(q=A.aIY(A.b([new A.W(A.b(p.split("."),q),A.aHW(),s),new A.W(A.b("0.2.2".split("."),q),A.aHW(),s)],t.hX),t.S),q=new A.cm(q.a(),A.p(q).h("cm<1>"));q.q();){s=q.gD(q)
 r=J.ah(s)
 if(r.i(s,0)>r.i(s,1))return!0
 if(r.i(s,0)<r.i(s,1))return!1}return!1},
@@ -75508,10 +75508,10 @@ f=A.a27(new A.f(i.e>>>0),h.gS6(),"theme.color.secondary",f)
 s=A.aEi("\u8f85\u52a9\u8272B")
 r=t.p
 s=A.b([g,f,A.a27(new A.f(i.f>>>0),h.gXE(),"theme.color.surface",s),A.a27(new A.f(i.r>>>0),h.gaaM(),"theme.color.background","\u80cc\u666f\u8272")],r)
-f=A.ui(n,!0,!1,n,A.a8C("https://github.com/CCXXXI/jinhe-bus-routes-client/releases/tag/v0.2.1"),!1,n,B.U9,B.U2)
+f=A.ui(n,!0,!1,n,A.a8C("https://github.com/CCXXXI/jinhe-bus-routes-client/releases/tag/v0.2.2"),!1,n,B.U9,B.U2)
 g=A.aCX(B.Hx,new A.f(i.r>>>0).kN()>0.5?B.m:B.l,n)
 g=A.ui(n,!0,!1,n,A.a8C("https://github.com/CCXXXI/jinhe-bus-routes-client/issues"),!1,n,B.U7,g)
-g=A.aDI(b,A.b([f,new A.uu(new A.afk(this),n),g,new A.Ik(B.U3,"io.github.ccxxxi.jinhe@0.2.1+3",A.aFs("assets/images/icon.svg",new A.f(i.r>>>0).kN()>0.5?B.m:B.l,42),$.aGR.aP(),n)],r))
+g=A.aDI(b,A.b([f,new A.uu(new A.afk(this),n),g,new A.Ik(B.U3,"io.github.ccxxxi.jinhe@0.2.2+4",A.aFs("assets/images/icon.svg",new A.f(i.r>>>0).kN()>0.5?B.m:B.l,42),$.aGR.aP(),n)],r))
 g=A.aa(g,!0,A.p(g).h("r.E"))
 f=$.Ia()
 q=f.d
@@ -85644,7 +85644,7 @@ B.QM=new A.x(!0,null,null,null,null,null,15,B.aN,null,null,null,B.o,null,null,nu
 B.Tz=new A.x(!0,null,null,null,null,null,11,B.n,null,null,null,B.o,null,null,null,null,null,null,null,null,null,"tall overline 2018",null,null,null)
 B.U0=new A.dD(B.Th,B.Ti,B.Tj,B.Tk,B.Tl,B.Tm,B.QP,B.QQ,B.RG,B.RH,B.Rs,B.QM,B.Tz)
 B.U1=new A.R_(1,"longestLine")
-B.U2=new A.fN("0.2.1",null,null,null,null)
+B.U2=new A.fN("0.2.2",null,null,null,null)
 B.U3=new A.fN("\u8bb8\u53ef\u534f\u8bae",null,null,null,null)
 B.U4=new A.fN("Log Screen",null,null,null,null)
 B.U5=new A.fN("\u4e0b\u8f7d\u5ba2\u6237\u7aef",null,null,null,null)
