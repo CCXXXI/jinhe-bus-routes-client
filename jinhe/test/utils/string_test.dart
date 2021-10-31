@@ -7,7 +7,7 @@ const _num = r'(0|[1-9]\d*)';
 final _semVer = RegExp('$_num\\.$_num\\.$_num');
 
 void main() {
-  test('PanGu', () => expect('测试test'.s, '测试 test'));
+  test('PanGu', () => expect('测试test'.s.s.s, '测试 test'));
 
   group('package info', () {
     test(
