@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
         ),
         title: const Text(appName),
         actions: [
-          if (GetPlatform.isWeb)
+          if (GetPlatform.isWeb && !GetPlatform.isIOS)
             Padding(
               padding: const EdgeInsets.all(pi * e),
               child: ElevatedButton(
