@@ -19,6 +19,9 @@ dependencies:
   flutter_loggy:
   flutter_loggy_dio:
   flutter_spinkit:
+  dio:
+  dio_cookie_manager:
+  cookie_jar:
 
 dev_dependencies:
   flutter_test:
