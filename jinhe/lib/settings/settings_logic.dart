@@ -83,4 +83,25 @@ class SettingsLogic extends GetxController with L {
       Get.snackbar('获取最新版本失败', e.toString());
     }
   }
+
+  void levelOnChanged(String v) {
+    log
+      ..level = v
+      ..save();
+    Get.snackbar('日志设置已更新', '重启后生效');
+  }
+
+  void stackTraceLevelOnChanged(String v) {
+    log
+      ..stackTraceLevel = v
+      ..save();
+    Get.snackbar('日志设置已更新', '重启后生效');
+  }
+
+  void includeCallerInfoOnChanged(bool v) {
+    log
+      ..includeCallerInfo = v
+      ..save();
+    Get.snackbar('日志设置已更新', '重启后生效');
+  }
 }

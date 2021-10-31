@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_loggy/flutter_loggy.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -115,6 +116,36 @@ class SettingsPage extends StatelessWidget {
                     ),
                   ],
                 ).toList(),
+              ),
+              const Divider(),
+              SettingsGroup(
+                title: '开发者选项',
+                children: [
+                  SimpleDropDownSettingsTile(
+                    title: 'log.level',
+                    settingKey: 'log.level',
+                    selected: log.level,
+                    values: log.levels,
+                    onChange: logic.levelOnChanged,
+                  ),
+                  SimpleDropDownSettingsTile(
+                    title: 'log.stackTraceLevel',
+                    settingKey: 'log.stackTraceLevel',
+                    selected: log.stackTraceLevel,
+                    values: log.levels,
+                    onChange: logic.stackTraceLevelOnChanged,
+                  ),
+                  SwitchSettingsTile(
+                    title: 'log.includeCallerInfo',
+                    settingKey: 'log.includeCallerInfo',
+                    defaultValue: log.includeCallerInfo,
+                    onChange: logic.includeCallerInfoOnChanged,
+                  ),
+                  ListTile(
+                    title: const Text('Log Screen'),
+                    onTap: () => Get.to(() => const LoggyStreamScreen()),
+                  ),
+                ],
               ),
             ],
           ),
