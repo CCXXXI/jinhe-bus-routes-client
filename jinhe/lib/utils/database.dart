@@ -63,7 +63,7 @@ class _Theme extends HiveObject {
   Color get onPrimary => _on(primary);
 
   @HiveField(1)
-  int _secondary = 0xffa41f35;
+  int _secondary = 0xff888888;
 
   Color get secondary => Color(_secondary);
 
@@ -72,7 +72,7 @@ class _Theme extends HiveObject {
   Color get onSecondary => _on(secondary);
 
   @HiveField(2)
-  int _surface = 0xffa41f35;
+  int _surface = 0xff888888;
 
   Color get surface => Color(_surface);
 
