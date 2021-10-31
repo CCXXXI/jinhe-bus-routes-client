@@ -4,7 +4,7 @@ description: 金河市公交线路系统
 # Prevent the package from being accidentally published to pub.dev.
 publish_to: "none"
 
-version: 0.1.0+1
+version: 0.2.0+2
 
 environment:
   sdk: ">=2.15.0-262.0.dev"
@@ -12,20 +12,58 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  window_size:
+    git:
+      url: git://github.com/google/flutter-desktop-embedding.git
+      path: plugins/window_size
+  get:
+  hive_flutter:
+  path_provider:
+  loggy:
+  flutter_loggy:
+  flutter_loggy_dio:
+  flutter_spinkit:
+  dio:
+  dio_cookie_manager:
+  cookie_jar:
+  url_launcher:
+  flutter_svg:
+  font_awesome_flutter:
+  flutter_settings_screens: ">0.3.0"
+  sentry_flutter: ">=6.1.0-alpha.2"
+  quiver:
+  badges:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints:
   dependency_validator:
+  flutter_launcher_icons:
+  flutter_native_splash:
+  flutter_app_name:
   msix:
+  hive_generator:
+  build_runner:
+
+flutter_app_name:
+  name: "金河市公交线路系统"
 
 msix_config:
   display_name: "金河市公交线路系统"
   publisher_display_name: "CCXXXI"
   identity_name: "io.github.ccxxxi.jinhe"
-  msix_version: 0.1.0.1
+  msix_version: 0.2.0.2
   logo_path: "assets/images/icon.png"
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: NotoSansSC
+      fonts:
+        - asset: assets/fonts/NotoSansSC-Regular.otf
+
+  assets:
+    - assets/LICENSE
+    - assets/images/icon.svg
