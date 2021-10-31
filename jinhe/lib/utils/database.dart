@@ -16,13 +16,13 @@ Future<void> initDatabase({
     final dir = await getApplicationSupportDirectory();
     Hive.init(dir.path);
   } else {
-    await Hive.initFlutter(packageName);
+    await Hive.initFlutter();
   }
 
   Hive.registerAdapter(LogAdapter());
   Hive.registerAdapter(ThemeAdapter());
 
-  conf = await Hive.openBox('conf');
+  conf = await Hive.openBox('$packageName.conf');
 
   if (clear) await conf.clear();
 
