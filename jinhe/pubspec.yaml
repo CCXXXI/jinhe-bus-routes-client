@@ -18,6 +18,7 @@ dependencies:
   loggy:
   flutter_loggy:
   flutter_loggy_dio:
+  flutter_spinkit:
 
 dev_dependencies:
   flutter_test:
