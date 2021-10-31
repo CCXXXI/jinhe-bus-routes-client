@@ -43,6 +43,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      body: const Placeholder(),
     );
   }
 }
