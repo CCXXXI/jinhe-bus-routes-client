@@ -6,35 +6,34 @@ import '../utils/database.dart';
 import '../utils/log.dart';
 import '../utils/string.dart';
 import '../utils/web.dart';
-import 'theme.dart';
 
 class SettingsLogic extends GetxController with L {
   void primaryOnChanged(Color v) {
     theme
       ..primary = v
       ..save();
-    updateTheme();
+    Get.snackbar('主题设置已更新', '重启后生效');
   }
 
   void secondaryOnChanged(Color v) {
     theme
       ..secondary = v
       ..save();
-    updateTheme();
+    Get.snackbar('主题设置已更新', '重启后生效');
   }
 
   void surfaceOnChanged(Color v) {
     theme
       ..surface = v
       ..save();
-    updateTheme();
+    Get.snackbar('主题设置已更新', '重启后生效');
   }
 
   void backgroundOnChanged(Color v) {
     theme
       ..background = v
       ..save();
-    updateTheme();
+    Get.snackbar('主题设置已更新', '重启后生效');
   }
 
   /// - null: loading

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../utils/database.dart';
 
@@ -22,9 +21,4 @@ TextTheme get _textTheme => (_colorScheme.onBackground == Colors.white
 ThemeData get appTheme => ThemeData.from(
       colorScheme: _colorScheme,
       textTheme: _textTheme,
-    );
-
-void updateTheme() => Get.snackbar(
-      '主题设置已更新',
-      '重启后生效',
     );
