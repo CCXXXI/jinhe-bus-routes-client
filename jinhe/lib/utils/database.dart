@@ -50,14 +50,11 @@ final _Log log = conf.get('log');
 
 @HiveType(typeId: 2)
 class _Theme extends HiveObject {
-  static final _black = Colors.black.value;
-  static final _white = Colors.white.value;
-
   Color _on(Color color) =>
       color.computeLuminance() > .5 ? Colors.black : Colors.white;
 
   @HiveField(0)
-  int _primary = _white;
+  int _primary = 0xffeeeeee;
 
   Color get primary => Color(_primary);
 
@@ -66,7 +63,7 @@ class _Theme extends HiveObject {
   Color get onPrimary => _on(primary);
 
   @HiveField(1)
-  int _secondary = _white;
+  int _secondary = 0xffa41f35;
 
   Color get secondary => Color(_secondary);
 
@@ -75,7 +72,7 @@ class _Theme extends HiveObject {
   Color get onSecondary => _on(secondary);
 
   @HiveField(2)
-  int _surface = _white;
+  int _surface = 0xffa41f35;
 
   Color get surface => Color(_surface);
 
@@ -84,7 +81,7 @@ class _Theme extends HiveObject {
   Color get onSurface => _on(surface);
 
   @HiveField(3)
-  int _background = _black;
+  int _background = 0xff111111;
 
   Color get background => Color(_background);
 
