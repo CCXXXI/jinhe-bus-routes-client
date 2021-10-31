@@ -22,6 +22,7 @@ dependencies:
   dio:
   dio_cookie_manager:
   cookie_jar:
+  url_launcher:
 
 dev_dependencies:
   flutter_test:
