@@ -22451,7 +22451,7 @@ case 4:return A.G(null,r)}})
 return A.H($async$I0,r)},
 auF(a){var s=0,r=A.I(t.H)
 var $async$auF=A.C(function(b,c){if(b===1)return A.F(c,r)
-while(true)switch(s){case 0:A.n2("Global Loggy",t.N9).ok(B.cD,"release: io.github.ccxxxi.jinhe@0.2.0+2",null,null)
+while(true)switch(s){case 0:A.n2("Global Loggy",t.N9).ok(B.cD,"release: io.github.ccxxxi.jinhe@0.2.1+3",null,null)
 $.mt().vp(new A.auG())
 s=2
 return A.K(A.PS(new A.auH(),new A.auI(a)),$async$auF)
@@ -22479,7 +22479,7 @@ xv(){var s=0,r=A.I(t.H),q,p,o
 var $async$xv=A.C(function(a,b){if(a===1)return A.F(b,r)
 while(true)switch(s){case 0:o=$.aA8()
 s=2
-return A.K(A.axm(o),$async$xv)
+return A.K(A.axm(o,"io.github.ccxxxi.jinhe"),$async$xv)
 case 2:o.Qh(new A.MO(),t.AN)
 o.Qh(new A.R0(),t.qu)
 q=t.z
@@ -24928,9 +24928,9 @@ d[k+3]=q>>>24},
 aSB(a,b){var s,r=new Uint8Array(b)
 for(s=0;s<b;++s)r[s]=a.oo(256)
 return r},
-axm(a){return A.aRi(a)},
-aRi(a){var s=0,r=A.I(t.H),q
-var $async$axm=A.C(function(b,c){if(b===1)return A.F(c,r)
+axm(a,b){return A.aRi(a,b)},
+aRi(a,b){var s=0,r=A.I(t.H),q
+var $async$axm=A.C(function(c,d){if(c===1)return A.F(d,r)
 while(true)switch(s){case 0:if($.ak==null)A.Rw()
 $.ak.toString
 s=1
@@ -75369,7 +75369,7 @@ $S:6}
 A.zD.prototype={}
 A.LT.prototype={
 C(a,b){var s=null,r=A.aFs("assets/images/icon.svg",new A.f($.rJ().d>>>0).kN()>0.5?B.m:B.l,s),q=A.b([],t.p)
-q.push(new A.cM(B.k5,new A.KR(A.a8C(u.u),s,s,s,s,B.k,s,!1,B.U4,s),s))
+q.push(new A.cM(B.k5,new A.KR(A.a8C(u.u),s,s,s,s,B.k,s,!1,B.U5,s),s))
 q.push(A.tW(s,B.Ho,24,new A.a7k(),B.bL,s))
 return A.C0(A.rQ(q,s,!0,s,s,s,1,s,s,s,!1,s,s,s,new A.cM(B.k5,r,s),s,!0,s,s,s,s,B.U8,s,s,s,1,s),B.NT,s,s)}}
 A.a7k.prototype={
@@ -75410,7 +75410,7 @@ A.auH.prototype={
 $1(a){a.a="https://85129d39be5542c4b1a6391f906006c2@o996799.ingest.sentry.io/6042560"
 a.y1=1
 a.ry=!0
-a.db="io.github.ccxxxi.jinhe@0.2.0+2"
+a.db="io.github.ccxxxi.jinhe@0.2.1+3"
 return a},
 $S:484}
 A.auI.prototype={
@@ -75447,14 +75447,14 @@ s=2
 return A.K(q.tZ(),$async$rS)
 case 2:p=b
 o.sp(0,p==null?"":p)
-if(q.gF9())A.jP($.aK(),"\u53d1\u73b0\u65b0\u7248\u672c","0.2.0 \u2192 "+A.d(o.gp(o)),t.z)
+if(q.gF9())A.jP($.aK(),"\u53d1\u73b0\u65b0\u7248\u672c","0.2.1 \u2192 "+A.d(o.gp(o)),t.z)
 return A.G(null,r)}})
 return A.H($async$rS,r)},
 gF9(){var s,r,q=this.db,p=q.gp(q)
 if(p==null||p.length===0)return!1
 q=t.s
 s=t.SR
-for(q=A.aIY(A.b([new A.W(A.b(p.split("."),q),A.aHW(),s),new A.W(A.b("0.2.0".split("."),q),A.aHW(),s)],t.hX),t.S),q=new A.cm(q.a(),A.p(q).h("cm<1>"));q.q();){s=q.gD(q)
+for(q=A.aIY(A.b([new A.W(A.b(p.split("."),q),A.aHW(),s),new A.W(A.b("0.2.1".split("."),q),A.aHW(),s)],t.hX),t.S),q=new A.cm(q.a(),A.p(q).h("cm<1>"));q.q();){s=q.gD(q)
 r=J.ah(s)
 if(r.i(s,0)>r.i(s,1))return!0
 if(r.i(s,0)<r.i(s,1))return!1}return!1},
@@ -75508,10 +75508,10 @@ f=A.a27(new A.f(i.e>>>0),h.gS6(),"theme.color.secondary",f)
 s=A.aEi("\u8f85\u52a9\u8272B")
 r=t.p
 s=A.b([g,f,A.a27(new A.f(i.f>>>0),h.gXE(),"theme.color.surface",s),A.a27(new A.f(i.r>>>0),h.gaaM(),"theme.color.background","\u80cc\u666f\u8272")],r)
-f=A.ui(n,!0,!1,n,A.a8C("https://github.com/CCXXXI/jinhe-bus-routes-client/releases/tag/v0.2.0"),!1,n,B.U9,B.U7)
+f=A.ui(n,!0,!1,n,A.a8C("https://github.com/CCXXXI/jinhe-bus-routes-client/releases/tag/v0.2.1"),!1,n,B.U9,B.U2)
 g=A.aCX(B.Hx,new A.f(i.r>>>0).kN()>0.5?B.m:B.l,n)
-g=A.ui(n,!0,!1,n,A.a8C("https://github.com/CCXXXI/jinhe-bus-routes-client/issues"),!1,n,B.U6,g)
-g=A.aDI(b,A.b([f,new A.uu(new A.afk(this),n),g,new A.Ik(B.U2,"io.github.ccxxxi.jinhe@0.2.0+2",A.aFs("assets/images/icon.svg",new A.f(i.r>>>0).kN()>0.5?B.m:B.l,42),$.aGR.aP(),n)],r))
+g=A.ui(n,!0,!1,n,A.a8C("https://github.com/CCXXXI/jinhe-bus-routes-client/issues"),!1,n,B.U7,g)
+g=A.aDI(b,A.b([f,new A.uu(new A.afk(this),n),g,new A.Ik(B.U3,"io.github.ccxxxi.jinhe@0.2.1+3",A.aFs("assets/images/icon.svg",new A.f(i.r>>>0).kN()>0.5?B.m:B.l,42),$.aGR.aP(),n)],r))
 g=A.aa(g,!0,A.p(g).h("r.E"))
 f=$.Ia()
 q=f.d
@@ -75520,7 +75520,7 @@ o=p.gal(p)
 o=A.aF7(h.gafl(),q,m,m,A.aa(o,!0,A.p(o).h("r.E")))
 q=f.e
 p=p.gal(p)
-return A.C0(j,A.bX(new A.eQ(B.xK,A.MF(A.b([new A.v6("\u4e3b\u9898",s,n),new A.v6("\u5173\u4e8e",g,n),B.k_,new A.v6("\u5f00\u53d1\u8005\u9009\u9879",A.b([o,A.aF7(h.gST(),q,l,l,A.aa(p,!0,A.p(p).h("r.E"))),new A.QK(k,f.f,k,h.gaeF(),n),A.ui(n,!0,!1,n,new A.afl(),!1,n,B.U3,n)],r),n)],r),n,!1,!1),n),n,n),n,n)}}
+return A.C0(j,A.bX(new A.eQ(B.xK,A.MF(A.b([new A.v6("\u4e3b\u9898",s,n),new A.v6("\u5173\u4e8e",g,n),B.k_,new A.v6("\u5f00\u53d1\u8005\u9009\u9879",A.b([o,A.aF7(h.gST(),q,l,l,A.aa(p,!0,A.p(p).h("r.E"))),new A.QK(k,f.f,k,h.gaeF(),n),A.ui(n,!0,!1,n,new A.afl(),!1,n,B.U4,n)],r),n)],r),n,!1,!1),n),n,n),n,n)}}
 A.afk.prototype={
 $0(){var s,r=null,q=this.a.c,p=q.db
 if(p.gp(p)==null){q=$.aK()
@@ -75541,7 +75541,7 @@ p.toString
 p=A.ck(p,r,r)
 s=A.aCX(q.gF9()?B.HA:B.Hz,r,16)
 q=q.gF9()?B.pY:B.pV
-q=new A.y4(p,new A.a0w(-4,r,-32),s,q,r)}}return A.ui(r,!0,!1,r,A.a8C(u.u),!1,r,B.U5,q)},
+q=new A.y4(p,new A.a0w(-4,r,-32),s,q,r)}}return A.ui(r,!0,!1,r,A.a8C(u.u),!1,r,B.U6,q)},
 $S:486}
 A.afl.prototype={
 $0(){return A.aDb($.aK(),new A.afj(),t.z)},
@@ -85644,12 +85644,12 @@ B.QM=new A.x(!0,null,null,null,null,null,15,B.aN,null,null,null,B.o,null,null,nu
 B.Tz=new A.x(!0,null,null,null,null,null,11,B.n,null,null,null,B.o,null,null,null,null,null,null,null,null,null,"tall overline 2018",null,null,null)
 B.U0=new A.dD(B.Th,B.Ti,B.Tj,B.Tk,B.Tl,B.Tm,B.QP,B.QQ,B.RG,B.RH,B.Rs,B.QM,B.Tz)
 B.U1=new A.R_(1,"longestLine")
-B.U2=new A.fN("\u8bb8\u53ef\u534f\u8bae",null,null,null,null)
-B.U3=new A.fN("Log Screen",null,null,null,null)
-B.U4=new A.fN("\u4e0b\u8f7d\u5ba2\u6237\u7aef",null,null,null,null)
-B.U5=new A.fN("\u6700\u65b0\u7248\u672c",null,null,null,null)
-B.U6=new A.fN("\u53cd\u9988",null,null,null,null)
-B.U7=new A.fN("0.2.0",null,null,null,null)
+B.U2=new A.fN("0.2.1",null,null,null,null)
+B.U3=new A.fN("\u8bb8\u53ef\u534f\u8bae",null,null,null,null)
+B.U4=new A.fN("Log Screen",null,null,null,null)
+B.U5=new A.fN("\u4e0b\u8f7d\u5ba2\u6237\u7aef",null,null,null,null)
+B.U6=new A.fN("\u6700\u65b0\u7248\u672c",null,null,null,null)
+B.U7=new A.fN("\u53cd\u9988",null,null,null,null)
 B.U8=new A.fN("\u91d1\u6cb3\u5e02\u516c\u4ea4\u7ebf\u8def\u7cfb\u7edf",null,null,null,null)
 B.U9=new A.fN("\u5f53\u524d\u7248\u672c",null,null,null,null)
 B.Ua=new A.fN("\u8bbe\u7f6e",null,null,null,null)
