@@ -13,5 +13,12 @@ void main() {
     await Hive.close();
   });
 
-  test('theme', () => expect(appTheme.colorScheme.onBackground, Colors.white));
+  test('theme', () {
+    expect(appTheme.colorScheme.onBackground, Colors.white);
+
+    theme
+      ..background = Colors.white
+      ..save();
+    expect(appTheme.colorScheme.onBackground, Colors.black);
+  });
 }
