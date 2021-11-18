@@ -42,7 +42,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "io.github.ccxxxi.jinhe"
+        applicationId "io.github.ccxxxi.jinhe_client"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
