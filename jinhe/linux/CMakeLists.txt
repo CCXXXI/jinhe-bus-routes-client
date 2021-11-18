@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
 set(BINARY_NAME "jinhe")
-set(APPLICATION_ID "io.github.ccxxxi.jinhe")
+set(APPLICATION_ID "io.github.ccxxxi.jinhe_client")
 
 cmake_policy(SET CMP0063 NEW)
 
