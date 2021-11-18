@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(pi * e),
               child: ElevatedButton(
                 onPressed: Url.latest.launch,
-                child: const Text('下载客户端'),
+                child: Text('下载App'.s),
               ),
             ),
           IconButton(
