@@ -1,5 +1,5 @@
 name: jinhe_client
-description: 金河市公交线路系统
+description: 金河市公交线路查询客户端
 
 # Prevent the package from being accidentally published to pub.dev.
 publish_to: "none"
@@ -47,10 +47,10 @@ dev_dependencies:
   build_runner:
 
 flutter_app_name:
-  name: "金河市公交线路系统"
+  name: "金河市公交线路查询客户端"
 
 msix_config:
-  display_name: "金河市公交线路系统"
+  display_name: "金河市公交线路查询客户端"
   publisher_display_name: "CCXXXI"
   identity_name: "io.github.ccxxxi.jinhe_client"
   msix_version: 0.3.1.6
