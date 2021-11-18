@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
-set(BINARY_NAME "jinhe")
+set(BINARY_NAME "金河市公交线路查询客户端")
 set(APPLICATION_ID "io.github.ccxxxi.jinhe_client")
 
 cmake_policy(SET CMP0063 NEW)

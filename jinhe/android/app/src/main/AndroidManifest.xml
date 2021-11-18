@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="io.github.ccxxxi.jinhe_client">
     <application
-            android:label="金河市公交线路系统"
+            android:label="金河市公交线路查询客户端"
             android:name="${applicationName}"
             android:icon="@mipmap/ic_launcher">
         <activity
