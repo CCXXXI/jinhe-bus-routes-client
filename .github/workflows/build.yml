@@ -7,7 +7,7 @@ on:
 
 defaults:
   run:
-    working-directory: jinhe
+    working-directory: jinhe_client
 
 jobs:
   build-web:
@@ -15,27 +15,27 @@ jobs:
     steps:
       - uses: CCXXXI/flutter-action@main
         with:
-          directory: jinhe
+          directory: jinhe_client
 
       - run: flutter build web
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: jinhe/build/web
+          publish_dir: jinhe_client/build/web/
 
   build-windows:
     runs-on: windows-latest
     steps:
       - uses: CCXXXI/flutter-action@main
         with:
-          directory: jinhe
+          directory: jinhe_client
 
       - run: flutter build windows
 
       - uses: papeloto/action-zip@v1
         with:
-          files: jinhe/build/windows/runner/Release/
+          files: jinhe_client/build/windows/runner/Release/
           dest: windows-release.zip
       - uses: actions/upload-artifact@v2
         with:
@@ -47,21 +47,21 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: msix
-          path: jinhe/build/windows/runner/Release/jinhe.msix
+          path: jinhe_client/build/windows/runner/Release/jinhe_client.msix
 
   build-linux:
     runs-on: ubuntu-latest
     steps:
       - uses: CCXXXI/flutter-action@main
         with:
-          directory: jinhe
+          directory: jinhe_client
       - run: sudo apt install clang cmake ninja-build pkg-config libgtk-3-dev
 
       - run: flutter build linux
 
       - uses: papeloto/action-zip@v1
         with:
-          files: jinhe/build/linux/x64/release/bundle/
+          files: jinhe_client/build/linux/x64/release/bundle/
           dest: linux-release.zip
       - uses: actions/upload-artifact@v2
         with:
@@ -73,13 +73,13 @@ jobs:
     steps:
       - uses: CCXXXI/flutter-action@main
         with:
-          directory: jinhe
+          directory: jinhe_client
 
       - run: flutter build macos
 
       - uses: papeloto/action-zip@v1
         with:
-          files: jinhe/build/macos/Build/Products/Release/
+          files: jinhe_client/build/macos/Build/Products/Release/
           dest: macos-release.zip
       - uses: actions/upload-artifact@v2
         with:
@@ -91,7 +91,7 @@ jobs:
     steps:
       - uses: CCXXXI/flutter-action@main
         with:
-          directory: jinhe
+          directory: jinhe_client
       - run: echo "${{ secrets.KEY_JKS }}" | base64 --decode > android/app/key.jks
       - run: echo "${{ secrets.KEY_PROPERTIES }}" | base64 --decode > android/key.properties
 
@@ -100,20 +100,20 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: android
-          path: jinhe/build/app/outputs/apk/release/*.apk
+          path: jinhe_client/build/app/outputs/apk/release/*.apk
 
   build-ios:
     runs-on: macos-latest
     steps:
       - uses: CCXXXI/flutter-action@main
         with:
-          directory: jinhe
+          directory: jinhe_client
 
       - run: flutter build ios --no-codesign
 
       - uses: papeloto/action-zip@v1
         with:
-          files: jinhe/build/ios/Release-iphoneos/Runner.app/
+          files: jinhe_client/build/ios/Release-iphoneos/Runner.app/
           dest: ios-release.zip
       - uses: actions/upload-artifact@v2
         with:
