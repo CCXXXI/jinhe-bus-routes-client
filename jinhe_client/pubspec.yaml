@@ -4,7 +4,7 @@ description: 金河市公交线路查询客户端
 # Prevent the package from being accidentally published to pub.dev.
 publish_to: "none"
 
-version: 0.4.1+8
+version: 0.4.2+9
 
 environment:
   sdk: ">=2.15.0-262.0.dev"
@@ -53,7 +53,7 @@ msix_config:
   display_name: "金河市公交线路查询客户端"
   publisher_display_name: "CCXXXI"
   identity_name: "io.github.ccxxxi.jinhe-client"
-  msix_version: 0.4.1.8
+  msix_version: 0.4.2.9
   logo_path: "assets/images/icon.png"
 
 flutter:
