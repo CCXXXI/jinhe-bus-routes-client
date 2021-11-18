@@ -4,7 +4,7 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "manifest.json": "8201e8eb1aadb9790f83118502e0349b",
-"version.json": "0cff2ca4e219216b81b15310a576174b",
+"version.json": "85f07477aa9515f0fe02cd7b222e388c",
 "canvaskit/canvaskit.wasm": "b179ba02b7a9f61ebc108f82c5a1ecdb",
 "canvaskit/profiling/canvaskit.wasm": "6d1b0fc1ec88c3110db88caa3393c580",
 "canvaskit/profiling/canvaskit.js": "3783918f48ef691e230156c251169480",
@@ -24,7 +24,7 @@ const RESOURCES = {
 "splash/img/light-1x.png": "a9ee2f6f2561f7fe8eb49253f1939652",
 "splash/img/dark-2x.png": "7f302d7ba72d01f6bb39de03dd738c9e",
 "favicon.ico": "919617b6036581b4dc8ea29a590bed77",
-"main.dart.js": "fdb9cd4929a886cc6396af4278eef171",
+"main.dart.js": "b2a033952cd8b97e5c7dbf963d7a9f00",
 "index.html": "64b60e7dc6590e23227e767140301f53",
 "/": "64b60e7dc6590e23227e767140301f53",
 "assets/NOTICES": "9487df3a33c9982533b319d99453b13f",
