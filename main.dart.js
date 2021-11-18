@@ -22482,7 +22482,7 @@ case 4:return A.G(null,r)}})
 return A.H($async$HX,r)},
 au8(a){var s=0,r=A.I(t.H)
 var $async$au8=A.C(function(b,c){if(b===1)return A.F(c,r)
-while(true)switch(s){case 0:A.mZ("Global Loggy",t.N9).on(B.cC,"release: io.github.ccxxxi.jinhe_client@0.4.1+8",null,null)
+while(true)switch(s){case 0:A.mZ("Global Loggy",t.N9).on(B.cC,"release: io.github.ccxxxi.jinhe_client@0.4.2+9",null,null)
 $.mp().vs(new A.au9())
 s=2
 return A.K(A.PO(new A.aua(),new A.aub(a)),$async$au8)
@@ -75449,9 +75449,9 @@ $S:6}
 A.zB.prototype={}
 A.LP.prototype={
 C(a,b){var s=null,r=A.aEo("assets/images/icon.svg",new A.f($.rG().d>>>0).kS()>0.5?B.m:B.l,s),q=A.b([],t.p)
-q.push(new A.cI(B.k4,new A.KN(A.a85(u.u),s,s,s,s,B.k,s,!1,B.U4,s),s))
+q.push(new A.cI(B.k4,new A.KN(A.a85(u.u),s,s,s,s,B.k,s,!1,B.U3,s),s))
 q.push(A.tT(s,B.Hn,s,new A.a6O(),B.bJ,s))
-return A.C_(A.rN(q,s,!0,s,s,s,1,s,s,s,!1,s,s,s,new A.cI(B.k4,r,s),s,!0,s,s,s,s,B.U7,s,s,s,1,s),B.NS,s,s)}}
+return A.C_(A.rN(q,s,!0,s,s,s,1,s,s,s,!1,s,s,s,new A.cI(B.k4,r,s),s,!0,s,s,s,s,B.U6,s,s,s,1,s),B.NS,s,s)}}
 A.a6O.prototype={
 $0(){return A.aC7($.aI(),new A.a6N(),t.z)},
 $S:0}
@@ -75490,7 +75490,7 @@ A.aua.prototype={
 $1(a){a.a="https://85129d39be5542c4b1a6391f906006c2@o996799.ingest.sentry.io/6042560"
 a.y1=1
 a.ry=!0
-a.db="io.github.ccxxxi.jinhe_client@0.4.1+8"
+a.db="io.github.ccxxxi.jinhe_client@0.4.2+9"
 return a},
 $S:484}
 A.aub.prototype={
@@ -75527,14 +75527,14 @@ s=2
 return A.K(q.u1(),$async$rW)
 case 2:p=b
 o.sp(0,p==null?"":p)
-if(q.gFe())A.jK($.aI(),"\u53d1\u73b0\u65b0\u7248\u672c","0.4.1 \u2192 "+A.d(o.gp(o)),t.z)
+if(q.gFe())A.jK($.aI(),"\u53d1\u73b0\u65b0\u7248\u672c","0.4.2 \u2192 "+A.d(o.gp(o)),t.z)
 return A.G(null,r)}})
 return A.H($async$rW,r)},
 gFe(){var s,r,q=this.db,p=q.gp(q)
 if(p==null||p.length===0)return!1
 q=t.s
 s=t.SR
-for(q=A.aHW(A.b([new A.V(A.b(p.split("."),q),A.aGU(),s),new A.V(A.b("0.4.1".split("."),q),A.aGU(),s)],t.hX),t.S),q=new A.ch(q.a(),A.t(q).h("ch<1>"));q.q();){s=q.gD(q)
+for(q=A.aHW(A.b([new A.V(A.b(p.split("."),q),A.aGU(),s),new A.V(A.b("0.4.2".split("."),q),A.aGU(),s)],t.hX),t.S),q=new A.ch(q.a(),A.t(q).h("ch<1>"));q.q();){s=q.gD(q)
 r=J.ah(s)
 if(r.i(s,0)>r.i(s,1))return!0
 if(r.i(s,0)<r.i(s,1))return!1}return!1},
@@ -75588,10 +75588,10 @@ f=A.a1B(new A.f(i.e>>>0),h.gSh(),"theme.color.secondary",f)
 s=A.aDd("\u8f85\u52a9\u8272B")
 r=t.p
 s=A.b([g,f,A.a1B(new A.f(i.f>>>0),h.gXJ(),"theme.color.surface",s),A.a1B(new A.f(i.r>>>0),h.gaaQ(),"theme.color.background","\u80cc\u666f\u8272")],r)
-f=A.uf(n,!0,!1,n,A.a85("https://github.com/CCXXXI/jinhe-bus-routes-client/releases/tag/v0.4.1"),!1,n,B.U8,B.U1)
+f=A.uf(n,!0,!1,n,A.a85("https://github.com/CCXXXI/jinhe-bus-routes-client/releases/tag/v0.4.2"),!1,n,B.U8,B.U7)
 g=A.aBT(B.Hw,new A.f(i.r>>>0).kS()>0.5?B.m:B.l,n)
-g=A.uf(n,!0,!1,n,A.a85("https://github.com/CCXXXI/jinhe-bus-routes-client/issues"),!1,n,B.U6,g)
-g=A.aCD(b,A.b([f,new A.uq(new A.aeN(this),n),g,new A.Ig(B.U2,"io.github.ccxxxi.jinhe_client@0.4.1+8",A.aEo("assets/images/icon.svg",new A.f(i.r>>>0).kS()>0.5?B.m:B.l,42),$.aFP.aO(),n)],r))
+g=A.uf(n,!0,!1,n,A.a85("https://github.com/CCXXXI/jinhe-bus-routes-client/issues"),!1,n,B.U5,g)
+g=A.aCD(b,A.b([f,new A.uq(new A.aeN(this),n),g,new A.Ig(B.U1,"io.github.ccxxxi.jinhe_client@0.4.2+9",A.aEo("assets/images/icon.svg",new A.f(i.r>>>0).kS()>0.5?B.m:B.l,42),$.aFP.aO(),n)],r))
 g=A.aa(g,!0,A.t(g).h("p.E"))
 f=$.I6()
 q=f.d
@@ -75600,7 +75600,7 @@ o=p.gak(p)
 o=A.aE3(h.gafp(),q,m,m,A.aa(o,!0,A.t(o).h("p.E")))
 q=f.e
 p=p.gak(p)
-return A.C_(j,A.bS(new A.eM(B.xJ,A.MB(A.b([new A.v2("\u4e3b\u9898",s,n),new A.v2("\u5173\u4e8e",g,n),B.jZ,new A.v2("\u5f00\u53d1\u8005\u9009\u9879",A.b([o,A.aE3(h.gT3(),q,l,l,A.aa(p,!0,A.t(p).h("p.E"))),new A.QJ(k,f.f,k,h.gaeJ(),n),A.uf(n,!0,!1,n,new A.aeO(),!1,n,B.U3,n)],r),n)],r),n,!1,!1),n),n,n),n,n)}}
+return A.C_(j,A.bS(new A.eM(B.xJ,A.MB(A.b([new A.v2("\u4e3b\u9898",s,n),new A.v2("\u5173\u4e8e",g,n),B.jZ,new A.v2("\u5f00\u53d1\u8005\u9009\u9879",A.b([o,A.aE3(h.gT3(),q,l,l,A.aa(p,!0,A.t(p).h("p.E"))),new A.QJ(k,f.f,k,h.gaeJ(),n),A.uf(n,!0,!1,n,new A.aeO(),!1,n,B.U2,n)],r),n)],r),n,!1,!1),n),n,n),n,n)}}
 A.aeN.prototype={
 $0(){var s,r=null,q=this.a.c,p=q.db
 if(p.gp(p)==null){q=$.aI()
@@ -75621,7 +75621,7 @@ p.toString
 p=A.cf(p,r,r)
 s=A.aBT(q.gFe()?B.Hz:B.Hy,r,16)
 q=q.gFe()?B.pX:B.pU
-q=new A.y2(p,new A.a0_(-4,r,-32),s,q,r)}}return A.uf(r,!0,!1,r,A.a85(u.u),!1,r,B.U5,q)},
+q=new A.y2(p,new A.a0_(-4,r,-32),s,q,r)}}return A.uf(r,!0,!1,r,A.a85(u.u),!1,r,B.U4,q)},
 $S:486}
 A.aeO.prototype={
 $0(){return A.aC7($.aI(),new A.aeM(),t.z)},
@@ -85719,13 +85719,13 @@ B.QL=new A.x(!0,null,null,null,null,null,15,B.aL,null,null,null,B.o,null,null,nu
 B.Ty=new A.x(!0,null,null,null,null,null,11,B.n,null,null,null,B.o,null,null,null,null,null,null,null,null,null,"tall overline 2018",null,null,null)
 B.U_=new A.dy(B.Tg,B.Th,B.Ti,B.Tj,B.Tk,B.Tl,B.QO,B.QP,B.RF,B.RG,B.Rr,B.QL,B.Ty)
 B.U0=new A.QZ(1,"longestLine")
-B.U1=new A.fJ("0.4.1",null,null,null,null)
-B.U2=new A.fJ("\u8bb8\u53ef\u534f\u8bae",null,null,null,null)
-B.U3=new A.fJ("Log Screen",null,null,null,null)
-B.U4=new A.fJ("\u4e0b\u8f7d\u5ba2\u6237\u7aef",null,null,null,null)
-B.U5=new A.fJ("\u6700\u65b0\u7248\u672c",null,null,null,null)
-B.U6=new A.fJ("\u53cd\u9988",null,null,null,null)
-B.U7=new A.fJ("\u91d1\u6cb3\u5e02\u516c\u4ea4\u7ebf\u8def\u67e5\u8be2\u5ba2\u6237\u7aef",null,null,null,null)
+B.U1=new A.fJ("\u8bb8\u53ef\u534f\u8bae",null,null,null,null)
+B.U2=new A.fJ("Log Screen",null,null,null,null)
+B.U3=new A.fJ("\u4e0b\u8f7d\u5ba2\u6237\u7aef",null,null,null,null)
+B.U4=new A.fJ("\u6700\u65b0\u7248\u672c",null,null,null,null)
+B.U5=new A.fJ("\u53cd\u9988",null,null,null,null)
+B.U6=new A.fJ("\u91d1\u6cb3\u5e02\u516c\u4ea4\u7ebf\u8def\u67e5\u8be2\u5ba2\u6237\u7aef",null,null,null,null)
+B.U7=new A.fJ("0.4.2",null,null,null,null)
 B.U8=new A.fJ("\u5f53\u524d\u7248\u672c",null,null,null,null)
 B.U9=new A.fJ("\u8bbe\u7f6e",null,null,null,null)
 B.wz=new A.R1(0,"system")
