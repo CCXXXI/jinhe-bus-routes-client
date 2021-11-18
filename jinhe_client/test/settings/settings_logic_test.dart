@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:jinhe/settings/settings_logic.dart';
-import 'package:jinhe/utils/database.dart';
-import 'package:jinhe/utils/string.dart';
-import 'package:jinhe/utils/web.dart';
+import 'package:jinhe_client/settings/settings_logic.dart';
+import 'package:jinhe_client/utils/database.dart';
+import 'package:jinhe_client/utils/string.dart';
+import 'package:jinhe_client/utils/web.dart';
 import 'package:loggy/loggy.dart';
 
 class FakeDio extends Fake implements Dio {
@@ -121,10 +121,10 @@ void main() {
 final fakeData = json.decode(r'''
 [
   {
-    "url": "https://api.github.com/repos/CCXXXI/jinhe/releases/51086607",
-    "assets_url": "https://api.github.com/repos/CCXXXI/jinhe/releases/51086607/assets",
-    "upload_url": "https://uploads.github.com/repos/CCXXXI/jinhe/releases/51086607/assets{?name,label}",
-    "html_url": "https://github.com/CCXXXI/jinhe/releases/tag/v1024.2048.4096",
+    "url": "https://api.github.com/repos/CCXXXI/jinhe_client/releases/51086607",
+    "assets_url": "https://api.github.com/repos/CCXXXI/jinhe_client/releases/51086607/assets",
+    "upload_url": "https://uploads.github.com/repos/CCXXXI/jinhe_client/releases/51086607/assets{?name,label}",
+    "html_url": "https://github.com/CCXXXI/jinhe_client/releases/tag/v1024.2048.4096",
     "id": 51086607,
     "author": {
       "login": "github-actions[bot]",
@@ -156,7 +156,7 @@ final fakeData = json.decode(r'''
     "published_at": "2021-10-09T21:22:53Z",
     "assets": [
       {
-        "url": "https://api.github.com/repos/CCXXXI/jinhe/releases/assets/46611305",
+        "url": "https://api.github.com/repos/CCXXXI/jinhe_client/releases/assets/46611305",
         "id": 46611305,
         "node_id": "RA_kwDOFjHll84Cxztp",
         "name": "app-arm64-v8a-release.apk",
@@ -187,10 +187,10 @@ final fakeData = json.decode(r'''
         "download_count": 0,
         "created_at": "2021-10-09T21:22:53Z",
         "updated_at": "2021-10-09T21:22:54Z",
-        "browser_download_url": "https://github.com/CCXXXI/jinhe/releases/download/v1024.2048.4096/app-arm64-v8a-release.apk"
+        "browser_download_url": "https://github.com/CCXXXI/jinhe_client/releases/download/v1024.2048.4096/app-arm64-v8a-release.apk"
       },
       {
-        "url": "https://api.github.com/repos/CCXXXI/jinhe/releases/assets/46611307",
+        "url": "https://api.github.com/repos/CCXXXI/jinhe_client/releases/assets/46611307",
         "id": 46611307,
         "node_id": "RA_kwDOFjHll84Cxztr",
         "name": "app-armeabi-v7a-release.apk",
@@ -221,10 +221,10 @@ final fakeData = json.decode(r'''
         "download_count": 0,
         "created_at": "2021-10-09T21:22:54Z",
         "updated_at": "2021-10-09T21:22:55Z",
-        "browser_download_url": "https://github.com/CCXXXI/jinhe/releases/download/v1024.2048.4096/app-armeabi-v7a-release.apk"
+        "browser_download_url": "https://github.com/CCXXXI/jinhe_client/releases/download/v1024.2048.4096/app-armeabi-v7a-release.apk"
       },
       {
-        "url": "https://api.github.com/repos/CCXXXI/jinhe/releases/assets/46611310",
+        "url": "https://api.github.com/repos/CCXXXI/jinhe_client/releases/assets/46611310",
         "id": 46611310,
         "node_id": "RA_kwDOFjHll84Cxztu",
         "name": "app-x86_64-release.apk",
@@ -255,10 +255,10 @@ final fakeData = json.decode(r'''
         "download_count": 0,
         "created_at": "2021-10-09T21:22:55Z",
         "updated_at": "2021-10-09T21:22:56Z",
-        "browser_download_url": "https://github.com/CCXXXI/jinhe/releases/download/v1024.2048.4096/app-x86_64-release.apk"
+        "browser_download_url": "https://github.com/CCXXXI/jinhe_client/releases/download/v1024.2048.4096/app-x86_64-release.apk"
       },
       {
-        "url": "https://api.github.com/repos/CCXXXI/jinhe/releases/assets/46611312",
+        "url": "https://api.github.com/repos/CCXXXI/jinhe_client/releases/assets/46611312",
         "id": 46611312,
         "node_id": "RA_kwDOFjHll84Cxztw",
         "name": "jinhe_windows.zip",
@@ -289,12 +289,12 @@ final fakeData = json.decode(r'''
         "download_count": 1,
         "created_at": "2021-10-09T21:22:56Z",
         "updated_at": "2021-10-09T21:22:57Z",
-        "browser_download_url": "https://github.com/CCXXXI/jinhe/releases/download/v1024.2048.4096/jinhe_windows.zip"
+        "browser_download_url": "https://github.com/CCXXXI/jinhe_client/releases/download/v1024.2048.4096/jinhe_windows.zip"
       }
     ],
-    "tarball_url": "https://api.github.com/repos/CCXXXI/jinhe/tarball/v1024.2048.4096",
-    "zipball_url": "https://api.github.com/repos/CCXXXI/jinhe/zipball/v1024.2048.4096",
-    "body": "## Features\n- **timetable**: update menu [#112](https://github.com/CCXXXI/jinhe/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe/commit/200d6a05cce708b0bba86d995152e9a5a5935fd4))\n- **utils**: set responseLevel of dio to debug [#112](https://github.com/CCXXXI/jinhe/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe/commit/71f8585b9e6414588a6db26eebc0362928480712))\n- **toolbox**: show academic calendar as image [#112](https://github.com/CCXXXI/jinhe/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe/commit/441a5ca4530d80e4f45fc571e581e738eab88134))\n- **toolbox**: InteractiveViewer for calendar [#112](https://github.com/CCXXXI/jinhe/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe/commit/bef4367c09f4e006acc3e44793729d24dfa79aeb))\n- **toolbox**: set maxScale of InteractiveViewer to infinity [#112](https://github.com/CCXXXI/jinhe/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe/commit/47d4fe2162d42d78877ce01a8f545534d74da271))\n- **toolbox**: basic idc [#112](https://github.com/CCXXXI/jinhe/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe/commit/284fe9fda4564cab3a3794d9498286b121080d49))\n\n## Bug Fixes\n- **toolbox**: disable academic calendar image on web [#112](https://github.com/CCXXXI/jinhe/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe/commit/ae5f0a78754407bd19a78ef26dcf1fb71fba2811))\n\n## Builds\n- use mirror by https://pub.flutter-io.cn [#112](https://github.com/CCXXXI/jinhe/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe/commit/bea470f673c00f5443bdf2f16e4d4eef43651073))\n\n## Chores\n- **deps**: universal_html [#112](https://github.com/CCXXXI/jinhe/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe/commit/982959ee859dd676fdce9f6465f4e451b2b605ca))\n- **deps**: cached_network_image [#112](https://github.com/CCXXXI/jinhe/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe/commit/cfd0932118051ab58ecc9b13ece48b871d5b9902))\n- 1024.2048.4096+14 [#112](https://github.com/CCXXXI/jinhe/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe/commit/82c7c2289d3ec7872b936fb2561b76698d588e22))"
+    "tarball_url": "https://api.github.com/repos/CCXXXI/jinhe_client/tarball/v1024.2048.4096",
+    "zipball_url": "https://api.github.com/repos/CCXXXI/jinhe_client/zipball/v1024.2048.4096",
+    "body": "## Features\n- **timetable**: update menu [#112](https://github.com/CCXXXI/jinhe_client/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe_client/commit/200d6a05cce708b0bba86d995152e9a5a5935fd4))\n- **utils**: set responseLevel of dio to debug [#112](https://github.com/CCXXXI/jinhe_client/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe_client/commit/71f8585b9e6414588a6db26eebc0362928480712))\n- **toolbox**: show academic calendar as image [#112](https://github.com/CCXXXI/jinhe_client/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe_client/commit/441a5ca4530d80e4f45fc571e581e738eab88134))\n- **toolbox**: InteractiveViewer for calendar [#112](https://github.com/CCXXXI/jinhe_client/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe_client/commit/bef4367c09f4e006acc3e44793729d24dfa79aeb))\n- **toolbox**: set maxScale of InteractiveViewer to infinity [#112](https://github.com/CCXXXI/jinhe_client/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe_client/commit/47d4fe2162d42d78877ce01a8f545534d74da271))\n- **toolbox**: basic idc [#112](https://github.com/CCXXXI/jinhe_client/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe_client/commit/284fe9fda4564cab3a3794d9498286b121080d49))\n\n## Bug Fixes\n- **toolbox**: disable academic calendar image on web [#112](https://github.com/CCXXXI/jinhe_client/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe_client/commit/ae5f0a78754407bd19a78ef26dcf1fb71fba2811))\n\n## Builds\n- use mirror by https://pub.flutter-io.cn [#112](https://github.com/CCXXXI/jinhe_client/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe_client/commit/bea470f673c00f5443bdf2f16e4d4eef43651073))\n\n## Chores\n- **deps**: universal_html [#112](https://github.com/CCXXXI/jinhe_client/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe_client/commit/982959ee859dd676fdce9f6465f4e451b2b605ca))\n- **deps**: cached_network_image [#112](https://github.com/CCXXXI/jinhe_client/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe_client/commit/cfd0932118051ab58ecc9b13ece48b871d5b9902))\n- 1024.2048.4096+14 [#112](https://github.com/CCXXXI/jinhe_client/pull/112) ([CCXXXI](https://github.com/CCXXXI/jinhe_client/commit/82c7c2289d3ec7872b936fb2561b76698d588e22))"
   }
 ]
 ''');

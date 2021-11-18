@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:jinhe/utils/loading.dart';
+import 'package:jinhe_client/utils/loading.dart';
 
 void main() {
   testWidgets('loading', (tester) async {

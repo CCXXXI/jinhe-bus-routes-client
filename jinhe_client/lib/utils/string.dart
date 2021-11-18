@@ -6,7 +6,7 @@ import 'pangu.dart';
 // package_info_plus cannot get real info on windows
 // record them manually
 const appName = '金河市公交线路系统';
-const packageName = 'io.github.ccxxxi.jinhe';
+const packageName = 'io.github.ccxxxi.jinhe_client';
 const version = '0.3.1';
 const buildNumber = '6';
 

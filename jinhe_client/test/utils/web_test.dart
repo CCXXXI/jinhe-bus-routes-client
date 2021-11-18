@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:jinhe/utils/web.dart';
+import 'package:jinhe_client/utils/web.dart';
 
 void main() {
   test('dio', () {

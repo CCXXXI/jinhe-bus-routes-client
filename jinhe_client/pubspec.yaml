@@ -1,4 +1,4 @@
-name: jinhe
+name: jinhe_client
 description: 金河市公交线路系统
 
 # Prevent the package from being accidentally published to pub.dev.
@@ -52,7 +52,7 @@ flutter_app_name:
 msix_config:
   display_name: "金河市公交线路系统"
   publisher_display_name: "CCXXXI"
-  identity_name: "io.github.ccxxxi.jinhe"
+  identity_name: "io.github.ccxxxi.jinhe_client"
   msix_version: 0.3.1.6
   logo_path: "assets/images/icon.png"
 

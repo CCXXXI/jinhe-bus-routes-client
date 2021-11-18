@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:jinhe/utils/string.dart';
+import 'package:jinhe_client/utils/string.dart';
 import 'package:quiver/pattern.dart';
 
 const _num = r'(0|[1-9]\d*)';
@@ -16,7 +16,7 @@ void main() {
     );
     test(
       'packageName',
-      () => expect(packageName, 'io.github.ccxxxi.jinhe'),
+      () => expect(packageName, 'io.github.ccxxxi.jinhe_client'),
     );
     test(
       'version',

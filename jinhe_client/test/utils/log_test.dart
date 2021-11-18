@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:jinhe/utils/database.dart';
-import 'package:jinhe/utils/log.dart';
+import 'package:jinhe_client/utils/database.dart';
+import 'package:jinhe_client/utils/log.dart';
 
 const testMessage = 'Lorem ipsum dolor sit';
 

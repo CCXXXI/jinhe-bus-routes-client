@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:jinhe/utils/database.dart';
+import 'package:jinhe_client/utils/database.dart';
 import 'package:loggy/loggy.dart';
 
 Future<void> main() async {

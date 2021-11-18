@@ -1,6 +1,6 @@
 {
-  "name": "jinhe",
-  "short_name": "jinhe",
+  "name": "jinhe_client",
+  "short_name": "jinhe_client",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0175C2",
