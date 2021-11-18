@@ -8,7 +8,7 @@ on:
 
 defaults:
   run:
-    working-directory: jinhe
+    working-directory: jinhe_client
 
 jobs:
   analyze:
@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: CCXXXI/flutter-action@main
         with:
-          directory: jinhe
+          directory: jinhe_client
       - run: flutter analyze
 
   coverage:
@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: CCXXXI/flutter-action@main
         with:
-          directory: jinhe
+          directory: jinhe_client
       - run: flutter test --coverage
       - uses: codecov/codecov-action@v2
 
@@ -33,5 +33,5 @@ jobs:
     steps:
       - uses: CCXXXI/flutter-action@main
         with:
-          directory: jinhe
+          directory: jinhe_client
       - run: flutter pub run dependency_validator
