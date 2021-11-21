@@ -1,6 +1,6 @@
-# 金河市公交线路系统
+# Jinhe Bus Routes System
 
-[服务端](../../../jinhe-bus-routes-server) | **客户端**
+[Server](../../../jinhe-bus-routes-server) | **Client**
 
 [![GitHub license](https://img.shields.io/github/license/ccxxxi/jinhe-bus-routes-client)](LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/ccxxxi/jinhe-bus-routes-client)](../../commits)
@@ -10,6 +10,4 @@
 [![codecov](https://codecov.io/gh/CCXXXI/jinhe-bus-routes-client/branch/main/graph/badge.svg?token=mVi5c6zHYl)](https://codecov.io/gh/CCXXXI/jinhe-bus-routes-client)
 [![GitHub release](https://img.shields.io/github/v/release/ccxxxi/jinhe-bus-routes-client)](../../releases/latest)
 
-华东师范大学 非关系型数据存储技术及其应用 2021 秋季学期 实践项目。
-
-文档位于 [jinhe-bus-routes-server](../../../jinhe-bus-routes-server)。
+ECNU NoSQL project.
