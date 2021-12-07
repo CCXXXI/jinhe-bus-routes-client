@@ -205,7 +205,7 @@ packages:
     source: hosted
     version: "4.0.4"
   dio_cache_interceptor:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: dio_cache_interceptor
       url: "https://pub.flutter-io.cn"
