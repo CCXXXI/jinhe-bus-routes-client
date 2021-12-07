@@ -8,8 +8,9 @@ import 'package:loggy/loggy.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
 final cookieJar = CookieJar();
+final hiveCacheStore = HiveCacheStore(null);
 final options = CacheOptions(
-  store: HiveCacheStore(null),
+  store: hiveCacheStore,
   policy: CachePolicy.forceCache,
 );
 
@@ -27,9 +28,7 @@ final defaultDio = Dio()
       responseLevel: LogLevel.debug,
     ),
     CookieManager(cookieJar),
-    DioCacheInterceptor(
-      options: options,
-    ),
+    DioCacheInterceptor(options: options),
   ]);
 
 /// Should be reassigned in and only in test code.
@@ -43,6 +42,9 @@ const _repo = 'CCXXXI/jinhe-bus-routes-client';
 
 class Api {
   static const releases = 'https://api.github.com/repos/$_repo/releases';
+
+  static const jinhe = 'http://101.35.25.41/jinhe';
+  static const version = '$jinhe/meta/version';
 }
 
 class Url {
@@ -52,4 +54,21 @@ class Url {
 
   static String version(String v) => '$_gh/$_repo/releases/tag/v$v';
   static const issues = '$_gh/$_repo/issues';
+}
+
+Future<bool> checkDataVer() async {
+  final String oldVer = (await dio.get(Api.version)).data;
+  final String newVer = (await dio.get(
+    Api.version,
+    options:
+        options.copyWith(policy: CachePolicy.refreshForceCache).toOptions(),
+  ))
+      .data;
+
+  if (oldVer != newVer) {
+    logInfo('New data version: $oldVer -> $newVer');
+    hiveCacheStore.clean();
+    return true;
+  }
+  return false;
 }
