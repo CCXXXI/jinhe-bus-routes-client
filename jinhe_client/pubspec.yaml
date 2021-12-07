@@ -48,6 +48,7 @@ dev_dependencies:
   msix:
   hive_generator:
   build_runner:
+  freezed:
 
 flutter_app_name:
   name: "金河市公交线路查询客户端"
