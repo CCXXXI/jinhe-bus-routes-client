@@ -338,6 +338,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "9.2.0"
+  freezed_annotation:
+    dependency: "direct main"
+    description:
+      name: freezed_annotation
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
   frontend_server_client:
     dependency: transitive
     description:
