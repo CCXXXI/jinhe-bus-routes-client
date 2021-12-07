@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
@@ -44,7 +46,35 @@ class Api {
   static const releases = 'https://api.github.com/repos/$_repo/releases';
 
   static const jinhe = 'http://101.35.25.41/jinhe';
+
+  // meta
   static const version = '$jinhe/meta/version';
+
+  // routes
+  static const routes = '$jinhe/routes/';
+
+  static String route(String name) => '$routes$name';
+
+  static String routeFirst(String name) => '${route(name)}/first';
+
+  static String routeSteps(String name) => '${route(name)}/steps';
+
+  // stations
+  static const stations = '$jinhe/stations/';
+
+  static String stationFirst(String id) => '$stations$id/first';
+
+  // stats
+  static const _stats = '$jinhe/stats';
+  static const routesTypes = '$_stats/routes/types';
+  static const routesStations = '$_stats/routes/stations';
+  static const routesTime = '$_stats/routes/time';
+  static const stationsRoutes = '$_stats/stations/routes';
+  static const stationsLinks = '$_stats/stations/links';
+
+  // paths
+  static String path(SplayTreeSet<String> from, SplayTreeSet<String> to) =>
+      '$jinhe/paths/shortest/${from.join('.')}/${to.join('.')}';
 }
 
 class Url {
