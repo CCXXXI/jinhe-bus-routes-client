@@ -204,6 +204,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.0.4"
+  dio_cache_interceptor:
+    dependency: transitive
+    description:
+      name: dio_cache_interceptor
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.3"
+  dio_cache_interceptor_hive_store:
+    dependency: "direct main"
+    description:
+      name: dio_cache_interceptor_hive_store
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.1"
   dio_cookie_manager:
     dependency: "direct main"
     description:

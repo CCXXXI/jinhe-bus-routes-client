@@ -33,6 +33,7 @@ dependencies:
   sentry_flutter: ">=6.1.0-alpha.2"
   quiver:
   badges:
+  dio_cache_interceptor_hive_store:
 
 dev_dependencies:
   flutter_test:
