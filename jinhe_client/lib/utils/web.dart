@@ -1,5 +1,7 @@
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
+import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_store.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flutter_loggy_dio/flutter_loggy_dio.dart';
 import 'package:loggy/loggy.dart';
@@ -21,6 +23,12 @@ final defaultDio = Dio()
       responseLevel: LogLevel.debug,
     ),
     CookieManager(cookieJar),
+    DioCacheInterceptor(
+      options: CacheOptions(
+        store: HiveCacheStore(null),
+        policy: CachePolicy.forceCache,
+      ),
+    ),
   ]);
 
 /// Should be reassigned in and only in test code.
