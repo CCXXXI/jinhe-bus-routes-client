@@ -8,6 +8,10 @@ import 'package:loggy/loggy.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
 final cookieJar = CookieJar();
+final options = CacheOptions(
+  store: HiveCacheStore(null),
+  policy: CachePolicy.forceCache,
+);
 
 /// The default Dio instance used by all production code.
 /// Test code may use a fake one.
@@ -24,10 +28,7 @@ final defaultDio = Dio()
     ),
     CookieManager(cookieJar),
     DioCacheInterceptor(
-      options: CacheOptions(
-        store: HiveCacheStore(null),
-        policy: CachePolicy.forceCache,
-      ),
+      options: options,
     ),
   ]);
 
