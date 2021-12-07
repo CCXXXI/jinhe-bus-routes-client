@@ -1,7 +1,17 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:jinhe_client/utils/database.dart';
 import 'package:jinhe_client/utils/web.dart';
 
 void main() {
+  setUpAll(() async {
+    await initDatabase();
+  });
+
+  tearDownAll(() async {
+    await Hive.close();
+  });
+
   test('dio', () {
     if (dio != defaultDio) dio = defaultDio;
 
