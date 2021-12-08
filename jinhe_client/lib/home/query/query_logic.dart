@@ -161,11 +161,17 @@ ${infoR['runtime']}    间隔${infoR['interval']}分钟
       final List<dynamic> stepsR =
           (await dio.get(Api.routeSteps(firstR[i][0]))).data;
       final List<int> tmpList = stepsR
-          .map((s) => (firstR[i][1].toInt() + s - 60 * 24) as int)
+          .map((s) => (firstR[i][1].toInt() + s - 60 * 24 * 3) as int)
           .toList()
-        ..addAll(stepsR.map((s) => (firstR[i][1].toInt() + s) as int))
         ..addAll(
-            stepsR.map((s) => (firstR[i][1].toInt() + s + 60 * 24) as int));
+            stepsR.map((s) => (firstR[i][1].toInt() + s - 60 * 24 * 2) as int))
+        ..addAll(stepsR.map((s) => (firstR[i][1].toInt() + s - 60 * 24) as int))
+        ..addAll(stepsR.map((s) => (firstR[i][1].toInt() + s) as int))
+        ..addAll(stepsR.map((s) => (firstR[i][1].toInt() + s + 60 * 24) as int))
+        ..addAll(
+            stepsR.map((s) => (firstR[i][1].toInt() + s + 60 * 24 * 2) as int))
+        ..addAll(
+            stepsR.map((s) => (firstR[i][1].toInt() + s + 60 * 24 * 3) as int));
       final nowV = now.value!.hour * 60 + now.value!.minute;
       final lb = lowerBound(tmpList, nowV);
       final v0 = tmpList[lb] - nowV,
