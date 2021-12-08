@@ -61,6 +61,7 @@ class MyAutocomplete extends StatelessWidget {
         (e) => e.str.toLowerCase().contains(t.text.toLowerCase()),
       ),
       onSelected: onSelected,
+      optionsMaxHeight: Get.height,
     );
   }
 }
