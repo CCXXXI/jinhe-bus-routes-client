@@ -36,6 +36,7 @@ dependencies:
   dio_cache_interceptor:
   dio_cache_interceptor_hive_store:
   freezed_annotation:
+  data_table_2:
 
 dev_dependencies:
   flutter_test:
