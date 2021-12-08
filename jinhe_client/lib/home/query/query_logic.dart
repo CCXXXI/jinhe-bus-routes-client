@@ -70,6 +70,9 @@ class QueryLogic extends GetxController with L {
 
     if (data0 is Route && data1 == null || data1 is Route && data0 == null) {
       buttonText.value = '查线路';
+    } else if (data0 is StationGroup && data1 == null ||
+        data1 is StationGroup && data0 == null) {
+      buttonText.value = '查同名站点';
     } else {
       buttonText.value = '查';
     }
@@ -85,7 +88,11 @@ class QueryLogic extends GetxController with L {
     th.clear();
     table.clear();
 
-    if (buttonText.value == '查线路') await queryRoute((data0 ?? data1) as Route);
+    if (buttonText.value == '查线路') {
+      await queryRoute((data0 ?? data1) as Route);
+    } else if (buttonText.value == '查同名站点') {
+      await queryStationGroup((data0 ?? data1) as StationGroup);
+    }
 
     busy.value = false;
   }
@@ -119,6 +126,14 @@ ${infoR['runtime']}    间隔${infoR['interval']}分钟
               return '$h:$m';
             }).toList())
         .toList();
+  }
+
+  Future<void> queryStationGroup(StationGroup sg) async {
+    for (final id in sg.ids) {
+      final List<dynamic> r = (await dio.get(Api.stationFirst(id))).data;
+      basicInfo.value += '站点 $id 停靠线路：\n'
+          '${r.map((e) => Route.fromFullName(e[0]).str).join('\n')}\n\n';
+    }
   }
 }
 
@@ -168,5 +183,15 @@ class Route with _$Route implements Data {
       r += up! ? 'u' : 'd';
     }
     return r;
+  }
+
+  factory Route.fromFullName(String n) {
+    if (n.endsWith('u')) {
+      return Route(n.substring(0, n.length - 1), true);
+    } else if (n.endsWith('d')) {
+      return Route(n.substring(0, n.length - 1), false);
+    } else {
+      return Route(n, null);
+    }
   }
 }

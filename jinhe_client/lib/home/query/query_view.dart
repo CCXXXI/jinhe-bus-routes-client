@@ -13,80 +13,82 @@ class QueryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 800),
-          child: Row(
-            children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    MyAutocomplete(logic, logic.updateData0),
-                    MyAutocomplete(logic, logic.updateData1),
-                  ],
+    return Center(
+      child: Column(
+        children: [
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      MyAutocomplete(logic, logic.updateData0),
+                      MyAutocomplete(logic, logic.updateData1),
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(width: 42),
-              SizedBox(
-                width: 128,
-                height: 128,
-                child: Obx(
-                  () => logic.busy.isTrue
-                      ? Loading()
-                      : ElevatedButton(
-                          onPressed: logic.buttonText.value == '查'
-                              ? null
-                              : logic.query,
-                          child: Text(logic.buttonText.value),
-                        ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Column(
-            children: [
-              Obx(
-                () => Text(
-                  logic.basicInfo.value,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Expanded(
-                child: Obx(() {
-                  if (logic.th.isEmpty || logic.table.isEmpty) {
-                    return const SizedBox();
-                  } else {
-                    return DataTable2(
-                      columnSpacing: 0,
-                      minWidth: logic.th.length * 64,
-                      dataRowHeight: 32,
-                      columns: [
-                        for (final d in logic.th)
-                          if (d is Station)
-                            DataColumn(label: CopyButton(d.zh, d.str))
-                          else
-                            DataColumn(label: CopyButton(d.str, d.str)),
-                      ],
-                      rows: [
-                        for (final row in logic.table)
-                          DataRow(
-                            cells: [
-                              for (final cell in row)
-                                DataCell(Center(child: Text(cell))),
-                            ],
+                const SizedBox(width: 42),
+                SizedBox(
+                  width: 128,
+                  height: 128,
+                  child: Obx(
+                    () => logic.busy.isTrue
+                        ? Loading()
+                        : ElevatedButton(
+                            onPressed: logic.buttonText.value == '查'
+                                ? null
+                                : logic.query,
+                            child: Text(logic.buttonText.value),
                           ),
-                      ],
-                    );
-                  }
-                }),
-              ),
-            ],
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+          Expanded(
+            child: Column(
+              children: [
+                Obx(
+                  () => Text(
+                    logic.basicInfo.value,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Expanded(
+                  child: Obx(() {
+                    if (logic.th.isEmpty || logic.table.isEmpty) {
+                      return const SizedBox();
+                    } else {
+                      return DataTable2(
+                        columnSpacing: 0,
+                        minWidth: logic.th.length * 64,
+                        dataRowHeight: 32,
+                        columns: [
+                          for (final d in logic.th)
+                            if (d is Station)
+                              DataColumn(label: CopyButton(d.zh, d.str))
+                            else
+                              DataColumn(label: CopyButton(d.str, d.str)),
+                        ],
+                        rows: [
+                          for (final row in logic.table)
+                            DataRow(
+                              cells: [
+                                for (final cell in row)
+                                  DataCell(Center(child: Text(cell))),
+                              ],
+                            ),
+                        ],
+                      );
+                    }
+                  }),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
