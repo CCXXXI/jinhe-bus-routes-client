@@ -37,6 +37,7 @@ dependencies:
   dio_cache_interceptor_hive_store:
   freezed_annotation:
   data_table_2:
+  day_night_time_picker:
 
 dev_dependencies:
   flutter_test:
