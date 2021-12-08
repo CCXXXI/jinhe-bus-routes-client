@@ -13,8 +13,8 @@ class RouteTypeLogic extends GetxController {
 
   void getRes() async {
     final Map<String, dynamic> r = (await dio.get(Api.routesTypes)).data;
-    var buffer = '';
-    r.forEach((key, value) => buffer += '$key: $value\n');
-    res.value = buffer;
+    var buffer = StringBuffer();
+    r.forEach((key, value) => buffer.writeln('$key: $value'));
+    res.value = buffer.toString();
   }
 }
