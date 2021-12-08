@@ -11,18 +11,21 @@ part 'query_logic.freezed.dart';
 class QueryLogic extends GetxController with L {
   final dataList = <Data>[];
   final busy = true.obs;
+  final stationMap = <String, Station>{};
 
   @override
   void onInit() {
     super.onInit();
-    initDataList();
+    initData();
   }
 
-  void initDataList() async {
+  void initData() async {
     final stations = (await dio.get(Api.stations)).data;
     final sgMap = <String, StationGroup>{};
     for (final s in stations) {
-      dataList.add(Station(s['zh'], s['en'], s['id']));
+      final station = Station(s['zh'], s['en'], s['id']);
+      stationMap[station.id] = station;
+      dataList.add(station);
       if (sgMap.containsKey(s['zh'])) {
         sgMap[s['zh']]!.ids.add(s['id']);
       } else {
@@ -72,27 +75,50 @@ class QueryLogic extends GetxController with L {
     }
   }
 
+  final basicInfo = ''.obs;
+  final th = <Data>[].obs;
+  final table = <List<String>>[].obs;
+
   void search() async {
     busy.value = true;
+    basicInfo.value = '';
+    th.clear();
+    table.clear();
 
     if (searchText.value == '搜线路') await searchRoute((data0 ?? data1) as Route);
 
     busy.value = false;
   }
 
-  final basicInfo = ''.obs;
-
   Future<void> searchRoute(Route route) async {
-    final Map<String, dynamic> r = (await dio.get(Api.route(route.name))).data;
-    if (r.isEmpty) {
+    final Map<String, dynamic> infoR =
+        (await dio.get(Api.route(route.name))).data;
+
+    if (infoR.isEmpty) {
       basicInfo.value = '无查询结果';
-    } else {
-      basicInfo.value = '''
-${r['direction']}    ${r['type']}
-${r['runtime']}    间隔${r['interval']}分钟
-全程${r['kilometer']}公里    ${r['oneway']}
-''';
+      return;
     }
+
+    basicInfo.value = '''
+${infoR['direction']}    ${infoR['type']}
+${infoR['runtime']}    间隔${infoR['interval']}分钟
+全程${infoR['kilometer']}公里    ${infoR['oneway']}
+''';
+
+    final List<dynamic> firstR =
+        (await dio.get(Api.routeFirst(route.fullName))).data;
+    th.value = firstR.map((f) => stationMap[f[0] as String]!).toList();
+    final List<dynamic> stepsR =
+        (await dio.get(Api.routeSteps(route.fullName))).data;
+    table.value = stepsR
+        .map((s) => firstR.map((f) {
+              int t = f[1].toInt() + s;
+              t %= 60 * 24;
+              final h = (t ~/ 60).toString().padLeft(2, '0');
+              final m = (t % 60).toString().padLeft(2, '0');
+              return '$h:$m';
+            }).toList())
+        .toList();
   }
 }
 
