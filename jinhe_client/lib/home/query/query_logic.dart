@@ -49,12 +49,12 @@ class QueryLogic extends GetxController with L {
 
   Data? data0, data1;
 
-  void updateData0(Data data) {
+  void updateData0(Data? data) {
     data0 = data;
     check();
   }
 
-  void updateData1(Data data) {
+  void updateData1(Data? data) {
     data1 = data;
     check();
   }
@@ -62,14 +62,37 @@ class QueryLogic extends GetxController with L {
   final searchText = '搜'.obs;
 
   void check() {
-    // todo
     l.debug(data0);
     l.debug(data1);
+
+    if (data0 is Route && data1 == null || data1 is Route && data0 == null) {
+      searchText.value = '搜线路';
+    } else {
+      searchText.value = '搜';
+    }
   }
 
-  void search() {
-    // todo
-    searchText.value = searchText.value * 2;
+  void search() async {
+    busy.value = true;
+
+    if (searchText.value == '搜线路') await searchRoute((data0 ?? data1) as Route);
+
+    busy.value = false;
+  }
+
+  final basicInfo = ''.obs;
+
+  Future<void> searchRoute(Route route) async {
+    final Map<String, dynamic> r = (await dio.get(Api.route(route.name))).data;
+    if (r.isEmpty) {
+      basicInfo.value = '无查询结果';
+    } else {
+      basicInfo.value = '''
+${r['direction']}    ${r['type']}
+${r['runtime']}    间隔${r['interval']}分钟
+全程${r['kilometer']}公里    ${r['oneway']}
+''';
+    }
   }
 }
 

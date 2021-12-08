@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../utils/loading.dart';
 import 'query_logic.dart';
 
 class QueryWidget extends StatelessWidget {
@@ -28,18 +29,31 @@ class QueryWidget extends StatelessWidget {
               SizedBox(
                 width: 128,
                 height: 128,
-                child: ElevatedButton(
-                  onPressed: logic.search,
-                  child: Obx(
-                    () => Text(logic.searchText.value),
-                  ),
+                child: Obx(
+                  () => logic.busy.isTrue
+                      ? Loading()
+                      : ElevatedButton(
+                          onPressed: logic.searchText.value == '搜'
+                              ? null
+                              : logic.search,
+                          child: Text(logic.searchText.value),
+                        ),
                 ),
               ),
             ],
           ),
         ),
-        const Expanded(
-          child: Placeholder(),
+        Expanded(
+          child: ListView(
+            children: [
+              Obx(
+                () => Text(
+                  logic.basicInfo.value,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     );
@@ -48,7 +62,7 @@ class QueryWidget extends StatelessWidget {
 
 class MyAutocomplete extends StatelessWidget {
   final QueryLogic logic;
-  final void Function(Data) onSelected;
+  final void Function(Data?) onSelected;
 
   const MyAutocomplete(this.logic, this.onSelected, {Key? key})
       : super(key: key);
@@ -62,6 +76,28 @@ class MyAutocomplete extends StatelessWidget {
       ),
       onSelected: onSelected,
       optionsMaxHeight: Get.height,
+      fieldViewBuilder: fieldViewBuilder,
+    );
+  }
+
+  Widget fieldViewBuilder(
+      BuildContext context,
+      TextEditingController controller,
+      FocusNode focusNode,
+      void Function() onFieldSubmitted) {
+    return TextFormField(
+      controller: controller,
+      focusNode: focusNode,
+      onFieldSubmitted: (String value) => onFieldSubmitted(),
+      decoration: InputDecoration(
+        suffixIcon: IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: () {
+            controller.clear();
+            onSelected(null);
+          },
+        ),
+      ),
     );
   }
 }
