@@ -3,11 +3,12 @@ import 'dart:collection';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get/get.dart';
 
+import '../../utils/log.dart';
 import '../../utils/web.dart';
 
 part 'query_logic.freezed.dart';
 
-class QueryLogic extends GetxController {
+class QueryLogic extends GetxController with L {
   final dataList = <Data>[];
   final busy = true.obs;
 
@@ -44,6 +45,31 @@ class QueryLogic extends GetxController {
     });
 
     busy.value = false;
+  }
+
+  Data? data0, data1;
+
+  void updateData0(Data data) {
+    data0 = data;
+    check();
+  }
+
+  void updateData1(Data data) {
+    data1 = data;
+    check();
+  }
+
+  final searchText = '搜'.obs;
+
+  void check() {
+    // todo
+    l.debug(data0);
+    l.debug(data1);
+  }
+
+  void search() {
+    // todo
+    searchText.value = searchText.value * 2;
   }
 }
 
