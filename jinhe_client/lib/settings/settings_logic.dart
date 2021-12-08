@@ -1,3 +1,4 @@
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiver/iterables.dart';
@@ -75,6 +76,7 @@ class SettingsLogic extends GetxController with L {
       final r = await dio.get(
         Api.releases,
         queryParameters: {'per_page': 1},
+        options: options.copyWith(policy: CachePolicy.noCache).toOptions(),
       );
       return (r.data[0]['name'] as String).substring(1);
     } catch (e) {

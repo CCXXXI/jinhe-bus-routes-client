@@ -4,7 +4,7 @@ description: 金河市公交线路查询客户端
 # Prevent the package from being accidentally published to pub.dev.
 publish_to: "none"
 
-version: 0.5.1+12
+version: 1.0.0+13
 
 environment:
   sdk: ">=2.15.0-262.0.dev"
@@ -33,6 +33,11 @@ dependencies:
   sentry_flutter: ">=6.1.0-alpha.2"
   quiver:
   badges:
+  dio_cache_interceptor:
+  dio_cache_interceptor_hive_store:
+  freezed_annotation:
+  data_table_2:
+  day_night_time_picker:
 
 dev_dependencies:
   flutter_test:
@@ -45,6 +50,7 @@ dev_dependencies:
   msix:
   hive_generator:
   build_runner:
+  freezed:
 
 flutter_app_name:
   name: "金河市公交线路查询客户端"
@@ -53,7 +59,7 @@ msix_config:
   display_name: "金河市公交线路查询客户端"
   publisher_display_name: "CCXXXI"
   identity_name: "io.github.ccxxxi.jinhe-client"
-  msix_version: 0.5.1.12
+  msix_version: 1.0.0.13
   logo_path: "assets/images/icon.png"
 
 flutter:

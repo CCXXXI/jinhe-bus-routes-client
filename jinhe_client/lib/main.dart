@@ -10,6 +10,7 @@ import 'settings/theme.dart';
 import 'utils/database.dart';
 import 'utils/log.dart';
 import 'utils/string.dart';
+import 'utils/web.dart';
 
 void main() async {
   await initDatabase();
@@ -17,6 +18,7 @@ void main() async {
   initLog();
   if (GetPlatform.isDesktop && !GetPlatform.isWeb) initDesktop();
   await initMessages();
+  checkDataVer();
   await initSentry(const MyApp());
 }
 

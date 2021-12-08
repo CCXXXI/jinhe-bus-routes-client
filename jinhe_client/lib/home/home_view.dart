@@ -10,6 +10,7 @@ import '../utils/database.dart';
 import '../utils/string.dart';
 import '../utils/web.dart';
 import 'home_logic.dart';
+import 'query/query_view.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -43,7 +44,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: const Placeholder(),
+      body: QueryWidget(),
     );
   }
 }
