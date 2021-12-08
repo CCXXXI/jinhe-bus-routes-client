@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get/get.dart';
 
@@ -63,16 +64,23 @@ class QueryLogic extends GetxController with L {
   }
 
   final buttonText = '查'.obs;
+  final now = Rx<TimeOfDay?>(null);
 
   void check() {
     l.debug(data0);
     l.debug(data1);
+
+    now.value = null;
 
     if (data0 is Route && data1 == null || data1 is Route && data0 == null) {
       buttonText.value = '查线路';
     } else if (data0 is StationGroup && data1 == null ||
         data1 is StationGroup && data0 == null) {
       buttonText.value = '查同名站点';
+    } else if (data0 is Station && data1 == null ||
+        data1 is Station && data0 == null) {
+      buttonText.value = '查最近班次';
+      now.value = TimeOfDay.now();
     } else if ((data0 is StationGroup || data0 is Station) &&
         (data1 is StationGroup || data1 is Station)) {
       buttonText.value = '查推荐路线';
@@ -95,6 +103,8 @@ class QueryLogic extends GetxController with L {
       await queryRoute((data0 ?? data1) as Route);
     } else if (buttonText.value == '查同名站点') {
       await queryStationGroup((data0 ?? data1) as StationGroup);
+    } else if (buttonText.value == '查最近班次') {
+      await queryStation((data0 ?? data1) as Station);
     } else if (buttonText.value == '查推荐路线') {
       await queryPath(data0!, data1!);
     }
@@ -139,6 +149,37 @@ ${infoR['runtime']}    间隔${infoR['interval']}分钟
       basic.value += '站点 $id 停靠线路：\n'
           '${r.map((e) => Route.fromFullName(e[0]).str).join('\n')}\n\n';
     }
+  }
+
+  Future<void> queryStation(Station station) async {
+    final List<dynamic> firstR =
+        (await dio.get(Api.stationFirst(station.id))).data;
+    th.value = firstR.map((f) => Route.fromFullName(f[0] as String)).toList();
+    final tmp =
+        List.generate(3, (_) => firstR.map((_) => '').toList()).toList();
+    for (int i = 0; i != firstR.length; i++) {
+      final List<dynamic> stepsR =
+          (await dio.get(Api.routeSteps(firstR[i][0]))).data;
+      final List<int> tmpList = stepsR
+          .map((s) => (firstR[i][1].toInt() + s - 60 * 24) as int)
+          .toList()
+        ..addAll(stepsR.map((s) => (firstR[i][1].toInt() + s) as int))
+        ..addAll(
+            stepsR.map((s) => (firstR[i][1].toInt() + s + 60 * 24) as int));
+      final nowV = now.value!.hour * 60 + now.value!.minute;
+      final lb = lowerBound(tmpList, nowV);
+      final v0 = tmpList[lb] - nowV,
+          v1 = tmpList[lb + 1] - nowV,
+          v2 = tmpList[lb + 2] - nowV;
+      tmp[0][i] = v0 == 0
+          ? '【即将到达】'
+          : v0 <= 5
+              ? '【$v0 分钟】'
+              : '$v0 分钟';
+      tmp[1][i] = '$v1 分钟';
+      tmp[2][i] = '$v2 分钟';
+    }
+    table.value = tmp;
   }
 
   Future<void> queryPath(Data fromRaw, Data toRaw) async {

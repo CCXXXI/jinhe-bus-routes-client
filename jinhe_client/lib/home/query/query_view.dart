@@ -1,8 +1,10 @@
 import 'package:data_table_2/data_table_2.dart';
+import 'package:day_night_time_picker/lib/daynight_timepicker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../utils/database.dart';
 import '../../utils/loading.dart';
 import 'query_logic.dart';
 
@@ -46,46 +48,61 @@ class QueryWidget extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            child: Column(
-              children: [
-                Obx(
-                  () => Text(
-                    logic.basic.value,
-                    textAlign: TextAlign.center,
+          Obx(() {
+            if (logic.now.value == null) {
+              return const SizedBox();
+            }
+            return ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  showPicker(
+                    context: context,
+                    value: logic.now.value!,
+                    onChange: (v) => logic.now.value = v,
+                    is24HrFormat: true,
+                    accentColor: theme.primary,
+                    cancelText: '取消',
+                    okText: '确认',
                   ),
-                ),
-                Expanded(
-                  child: Obx(() {
-                    if (logic.th.isEmpty || logic.table.isEmpty) {
-                      return const SizedBox();
-                    } else {
-                      return DataTable2(
-                        columnSpacing: 0,
-                        minWidth: logic.th.length * 64,
-                        dataRowHeight: 32,
-                        columns: [
-                          for (final d in logic.th)
-                            if (d is Station)
-                              DataColumn(label: CopyButton(d.zh, d.str))
-                            else
-                              DataColumn(label: CopyButton(d.str, d.str)),
-                        ],
-                        rows: [
-                          for (final row in logic.table)
-                            DataRow(
-                              cells: [
-                                for (final cell in row)
-                                  DataCell(Center(child: Text(cell))),
-                              ],
-                            ),
-                        ],
-                      );
-                    }
-                  }),
-                ),
-              ],
+                );
+              },
+              child: Text(logic.now.string.substring(10, 15)),
+            );
+          }),
+          Obx(
+            () => Text(
+              logic.basic.value,
+              textAlign: TextAlign.center,
             ),
+          ),
+          Expanded(
+            child: Obx(() {
+              if (logic.th.isEmpty || logic.table.isEmpty) {
+                return const SizedBox();
+              } else {
+                return DataTable2(
+                  columnSpacing: 0,
+                  minWidth: logic.th.length * 64,
+                  dataRowHeight: 32,
+                  columns: [
+                    for (final d in logic.th)
+                      if (d is Station)
+                        DataColumn(label: CopyButton(d.zh, d.str))
+                      else
+                        DataColumn(label: CopyButton(d.str, d.str)),
+                  ],
+                  rows: [
+                    for (final row in logic.table)
+                      DataRow(
+                        cells: [
+                          for (final cell in row)
+                            DataCell(Center(child: Text(cell))),
+                        ],
+                      ),
+                  ],
+                );
+              }
+            }),
           ),
         ],
       ),
@@ -143,8 +160,8 @@ class CopyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 512,
-      height: 512,
+      width: 1920,
+      height: 1080,
       child: OutlinedButton(
         onPressed: () {
           Clipboard.setData(ClipboardData(text: data));
