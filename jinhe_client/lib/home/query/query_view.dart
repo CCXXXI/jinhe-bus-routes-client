@@ -35,10 +35,10 @@ class QueryWidget extends StatelessWidget {
                   () => logic.busy.isTrue
                       ? Loading()
                       : ElevatedButton(
-                          onPressed: logic.searchText.value == '搜'
+                          onPressed: logic.buttonText.value == '查'
                               ? null
-                              : logic.search,
-                          child: Text(logic.searchText.value),
+                              : logic.query,
+                          child: Text(logic.buttonText.value),
                         ),
                 ),
               ),

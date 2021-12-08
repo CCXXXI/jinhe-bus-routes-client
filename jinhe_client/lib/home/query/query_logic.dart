@@ -62,16 +62,16 @@ class QueryLogic extends GetxController with L {
     check();
   }
 
-  final searchText = '搜'.obs;
+  final buttonText = '查'.obs;
 
   void check() {
     l.debug(data0);
     l.debug(data1);
 
     if (data0 is Route && data1 == null || data1 is Route && data0 == null) {
-      searchText.value = '搜线路';
+      buttonText.value = '查线路';
     } else {
-      searchText.value = '搜';
+      buttonText.value = '查';
     }
   }
 
@@ -79,18 +79,18 @@ class QueryLogic extends GetxController with L {
   final th = <Data>[].obs;
   final table = <List<String>>[].obs;
 
-  void search() async {
+  void query() async {
     busy.value = true;
     basicInfo.value = '';
     th.clear();
     table.clear();
 
-    if (searchText.value == '搜线路') await searchRoute((data0 ?? data1) as Route);
+    if (buttonText.value == '查线路') await queryRoute((data0 ?? data1) as Route);
 
     busy.value = false;
   }
 
-  Future<void> searchRoute(Route route) async {
+  Future<void> queryRoute(Route route) async {
     final Map<String, dynamic> infoR =
         (await dio.get(Api.route(route.name))).data;
 
