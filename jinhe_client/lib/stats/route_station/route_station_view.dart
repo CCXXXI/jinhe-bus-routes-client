@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../utils/loading.dart';
 import 'route_station_logic.dart';
 
 class RouteStationPage extends StatelessWidget {
@@ -14,7 +15,16 @@ class RouteStationPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('统计路线站点'),
       ),
-      body: const Placeholder(),
+      body: Center(
+        child: Obx(
+          () => logic.res.isEmpty
+              ? Loading()
+              : Text(
+                  logic.res.value,
+                  textAlign: TextAlign.center,
+                ),
+        ),
+      ),
     );
   }
 }
