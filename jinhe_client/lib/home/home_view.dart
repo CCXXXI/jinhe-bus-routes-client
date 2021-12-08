@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../settings/settings_view.dart';
+import '../stats/stats_view.dart';
 import '../utils/database.dart';
 import '../utils/string.dart';
 import '../utils/web.dart';
@@ -38,6 +39,10 @@ class HomePage extends StatelessWidget {
                 child: Text('下载App'.s),
               ),
             ),
+          IconButton(
+            onPressed: () => Get.to(() => StatsPage()),
+            icon: const FaIcon(FontAwesomeIcons.chartBar),
+          ),
           IconButton(
             onPressed: () => Get.to(() => SettingsPage()),
             icon: const FaIcon(FontAwesomeIcons.cog),
