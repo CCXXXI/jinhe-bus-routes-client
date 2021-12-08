@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../utils/loading.dart';
 import 'station_link_logic.dart';
 
 class StationLinkPage extends StatelessWidget {
@@ -14,7 +15,16 @@ class StationLinkPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('统计站台连接'),
       ),
-      body: const Placeholder(),
+      body: Center(
+        child: Obx(
+          () => logic.res.isEmpty
+              ? Loading()
+              : Text(
+                  logic.res.value,
+                  textAlign: TextAlign.center,
+                ),
+        ),
+      ),
     );
   }
 }

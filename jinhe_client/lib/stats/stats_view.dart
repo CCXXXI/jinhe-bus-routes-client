@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../utils/database.dart';
-import 'duplicate_station/duplicate_station_view.dart';
 import 'route_station/route_station_view.dart';
 import 'route_time/route_time_view.dart';
 import 'route_transfer/route_transfer_view.dart';
@@ -46,11 +45,6 @@ class StatsPage extends StatelessWidget {
             FontAwesomeIcons.chartBar,
             '统计路线类型',
             onTap: () => Get.to(() => RouteTypePage()),
-          ),
-          ToolCard(
-            FontAwesomeIcons.chartBar,
-            '查询重复站点',
-            onTap: () => Get.to(() => DuplicateStationPage()),
           ),
           ToolCard(
             FontAwesomeIcons.chartBar,

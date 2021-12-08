@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../utils/loading.dart';
 import 'route_time_logic.dart';
 
 class RouteTimePage extends StatelessWidget {
@@ -14,7 +15,16 @@ class RouteTimePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('统计运行时间'),
       ),
-      body: const Placeholder(),
+      body: Center(
+        child: Obx(
+          () => logic.res.isEmpty
+              ? Loading()
+              : Text(
+                  logic.res.value,
+                  textAlign: TextAlign.center,
+                ),
+        ),
+      ),
     );
   }
 }

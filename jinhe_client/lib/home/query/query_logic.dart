@@ -84,6 +84,8 @@ class QueryLogic extends GetxController with L {
     } else if ((data0 is StationGroup || data0 is Station) &&
         (data1 is StationGroup || data1 is Station)) {
       buttonText.value = '查推荐路线';
+    } else if (data0 is Route && data1 is Route) {
+      buttonText.value = '查重复站点';
     } else {
       buttonText.value = '查';
     }
@@ -107,6 +109,8 @@ class QueryLogic extends GetxController with L {
       await queryStation((data0 ?? data1) as Station);
     } else if (buttonText.value == '查推荐路线') {
       await queryPath(data0!, data1!);
+    } else if (buttonText.value == '查重复站点') {
+      await queryRouteRoute(data0 as Route, data1 as Route);
     }
 
     busy.value = false;
@@ -233,6 +237,15 @@ ${infoR['runtime']}    间隔${infoR['interval']}分钟
     timeCnt += r[r.length - 2] as int;
     basic.value += (trCnt == 0 ? '直达' : '换乘 $trCnt 次') +
         '，全程共 ${r.length ~/ 3} 站，$timeCnt 分钟。';
+  }
+
+  Future<void> queryRouteRoute(Route r0, Route r1) async {
+    final List<dynamic> u = (await dio.get(Api.routeFirst(r0.fullName))).data;
+    final List<dynamic> v = (await dio.get(Api.routeFirst(r1.fullName))).data;
+    basic.value = Set.of(u.map((e) => e[0]))
+        .intersection(Set.of(v.map((e) => e[0])))
+        .map((e) => stationMap[e]!.str)
+        .join('\n');
   }
 }
 

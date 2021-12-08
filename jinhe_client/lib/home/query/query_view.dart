@@ -25,8 +25,8 @@ class QueryWidget extends StatelessWidget {
                 Expanded(
                   child: Column(
                     children: [
-                      MyAutocomplete(logic, logic.updateData0),
-                      MyAutocomplete(logic, logic.updateData1),
+                      MyAutocomplete(logic.dataList, logic.updateData0),
+                      MyAutocomplete(logic.dataList, logic.updateData1),
                     ],
                   ),
                 ),
@@ -111,17 +111,17 @@ class QueryWidget extends StatelessWidget {
 }
 
 class MyAutocomplete extends StatelessWidget {
-  final QueryLogic logic;
+  final List<Data> dataList;
   final void Function(Data?) onSelected;
 
-  const MyAutocomplete(this.logic, this.onSelected, {Key? key})
+  const MyAutocomplete(this.dataList, this.onSelected, {Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Autocomplete<Data>(
       displayStringForOption: (e) => e.str,
-      optionsBuilder: (t) => logic.dataList.where(
+      optionsBuilder: (t) => dataList.where(
         (e) => e.str.toLowerCase().contains(t.text.toLowerCase()),
       ),
       onSelected: onSelected,
