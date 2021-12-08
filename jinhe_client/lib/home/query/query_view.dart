@@ -51,7 +51,7 @@ class QueryWidget extends StatelessWidget {
               children: [
                 Obx(
                   () => Text(
-                    logic.basicInfo.value,
+                    logic.basic.value,
                     textAlign: TextAlign.center,
                   ),
                 ),

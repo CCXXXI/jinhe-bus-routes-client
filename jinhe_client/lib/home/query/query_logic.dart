@@ -73,18 +73,21 @@ class QueryLogic extends GetxController with L {
     } else if (data0 is StationGroup && data1 == null ||
         data1 is StationGroup && data0 == null) {
       buttonText.value = '查同名站点';
+    } else if ((data0 is StationGroup || data0 is Station) &&
+        (data1 is StationGroup || data1 is Station)) {
+      buttonText.value = '查推荐路线';
     } else {
       buttonText.value = '查';
     }
   }
 
-  final basicInfo = ''.obs;
+  final basic = ''.obs;
   final th = <Data>[].obs;
   final table = <List<String>>[].obs;
 
   void query() async {
     busy.value = true;
-    basicInfo.value = '';
+    basic.value = '';
     th.clear();
     table.clear();
 
@@ -92,6 +95,8 @@ class QueryLogic extends GetxController with L {
       await queryRoute((data0 ?? data1) as Route);
     } else if (buttonText.value == '查同名站点') {
       await queryStationGroup((data0 ?? data1) as StationGroup);
+    } else if (buttonText.value == '查推荐路线') {
+      await queryPath(data0!, data1!);
     }
 
     busy.value = false;
@@ -102,11 +107,11 @@ class QueryLogic extends GetxController with L {
         (await dio.get(Api.route(route.name))).data;
 
     if (infoR.isEmpty) {
-      basicInfo.value = '无查询结果';
+      basic.value = '无查询结果';
       return;
     }
 
-    basicInfo.value = '''
+    basic.value = '''
 ${infoR['direction']}    ${infoR['type']}
 ${infoR['runtime']}    间隔${infoR['interval']}分钟
 全程${infoR['kilometer']}公里    ${infoR['oneway']}
@@ -131,9 +136,56 @@ ${infoR['runtime']}    间隔${infoR['interval']}分钟
   Future<void> queryStationGroup(StationGroup sg) async {
     for (final id in sg.ids) {
       final List<dynamic> r = (await dio.get(Api.stationFirst(id))).data;
-      basicInfo.value += '站点 $id 停靠线路：\n'
+      basic.value += '站点 $id 停靠线路：\n'
           '${r.map((e) => Route.fromFullName(e[0]).str).join('\n')}\n\n';
     }
+  }
+
+  Future<void> queryPath(Data fromRaw, Data toRaw) async {
+    SplayTreeSet<String> from, to;
+    if (fromRaw is StationGroup) {
+      from = fromRaw.ids;
+    } else {
+      from = SplayTreeSet.of([(fromRaw as Station).id]);
+    }
+    if (toRaw is StationGroup) {
+      to = toRaw.ids;
+    } else {
+      to = SplayTreeSet.of([(toRaw as Station).id]);
+    }
+
+    if (from.intersection(to).isNotEmpty) {
+      basic.value = '原地传送？';
+      return;
+    }
+
+    final List<dynamic> r = (await dio.get(Api.path(from, to))).data;
+
+    if (r.length % 3 != 1) {
+      l.debug('r.length=${r.length}');
+      basic.value = '查不到……';
+      return;
+    }
+
+    var trCnt = 0, timeCnt = 0;
+    var pre = r[1];
+    basic.value += '从 ${stationMap[r[0]]!.str} 出发，'
+        '乘 ${Route.fromFullName(r[1]).str}\n';
+    for (int i = 4; i < r.length; i += 3) {
+      final time = r[i - 2] as int, station = r[i - 1], route = r[i];
+      timeCnt += time;
+      basic.value += '$time 分钟后到达 ${stationMap[station]!.str}\n';
+      if (route != pre) {
+        trCnt++;
+        pre = route;
+        basic.value += '换乘 ${Route.fromFullName(route).str}\n';
+      }
+    }
+    basic.value +=
+        '${r[r.length - 2]} 分钟后到达 ${stationMap[r[r.length - 1]]!.str}\n\n';
+    timeCnt += r[r.length - 2] as int;
+    basic.value += (trCnt == 0 ? '直达' : '换乘 $trCnt 次') +
+        '，全程共 ${r.length ~/ 3} 站，$timeCnt 分钟。';
   }
 }
 
