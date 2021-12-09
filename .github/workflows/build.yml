@@ -17,7 +17,7 @@ jobs:
         with:
           directory: jinhe_client
 
-      - run: flutter build web
+      - run: flutter build web --base-href /jinhe-bus-routes-client/
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
