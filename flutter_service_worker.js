@@ -36,8 +36,8 @@ const RESOURCES = {
 "assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "aa1ec80f1b30a51d64c72f669c1326a7",
 "assets/packages/day_night_time_picker/assets/sun.png": "5fd1657bcb73ce5faafde4183b3dab22",
 "assets/packages/day_night_time_picker/assets/moon.png": "71137650ab728a466a50fa4fa78fb2b9",
-"index.html": "b29cfc8212a75982f99576464f5877bd",
-"/": "b29cfc8212a75982f99576464f5877bd",
+"index.html": "efa490cb67b7cf64cd39164f67ccefb5",
+"/": "efa490cb67b7cf64cd39164f67ccefb5",
 "favicon.png": "b2879ee26f7dff59505061aae09d8c5c"
 };
 
