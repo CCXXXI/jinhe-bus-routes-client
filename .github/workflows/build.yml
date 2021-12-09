@@ -24,6 +24,21 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: jinhe_client/build/web/
 
+  build-web-alter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: CCXXXI/flutter-action@main
+        with:
+          directory: jinhe_client
+
+      - run: flutter build web --base-href /
+
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: jinhe_client/build/web/
+          publish_branch: gh-pages-alter
+
   build-windows:
     runs-on: windows-latest
     steps:
