@@ -7,8 +7,8 @@ import 'pangu.dart';
 // record them manually
 const appName = '金河市公交线路查询客户端';
 const packageName = 'io.github.ccxxxi.jinhe_client';
-const version = '1.2.0';
-const buildNumber = '15';
+const version = '1.2.1';
+const buildNumber = '16';
 
 const release = '$packageName@$version+$buildNumber';
 
