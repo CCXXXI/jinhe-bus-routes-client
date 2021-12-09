@@ -66,7 +66,9 @@ class QueryWidget extends StatelessWidget {
                   ),
                 );
               },
-              child: Text(logic.now.string.substring(10, 15)),
+              child: Text(RegExp(r'(?<=\().*(?=\))')
+                  .firstMatch(logic.now.string)!
+                  .group(0)!),
             );
           }),
           Obx(
