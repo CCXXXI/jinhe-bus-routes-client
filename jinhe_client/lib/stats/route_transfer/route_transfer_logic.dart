@@ -26,7 +26,6 @@ class RouteTransferLogic extends GetxController {
     busy.value = true;
     res.value = '';
 
-    var buffer = StringBuffer();
     final List<dynamic> firstR =
         (await dio.get(Api.routeFirst((data as Route).fullName))).data;
     for (final f in firstR) {
@@ -34,12 +33,13 @@ class RouteTransferLogic extends GetxController {
       final trans = transR.map((e) => e[0]).toSet()
         ..remove((data as Route).fullName);
       if (trans.isNotEmpty) {
+        final buffer = StringBuffer();
         buffer.writeln(logic.stationMap[f[0]]!.str);
         buffer.writeln(trans.map((e) => Route.fromFullName(e).str).join('、'));
         buffer.writeln();
+        res.value += buffer.toString();
       }
     }
-    res.value = buffer.toString();
 
     busy.value = false;
   }
