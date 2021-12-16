@@ -40,6 +40,7 @@ class RouteTransferLogic extends GetxController {
         res.value += buffer.toString();
       }
     }
+    if (res.isEmpty) res.value = '无可换乘线路';
 
     busy.value = false;
   }

@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get/get.dart';
+import 'package:tuple/tuple.dart';
 
 import '../../utils/log.dart';
 import '../../utils/web.dart';
@@ -92,7 +93,7 @@ class QueryLogic extends GetxController with L {
   }
 
   final basic = ''.obs;
-  final th = <Data>[].obs;
+  final th = <Tuple2<Data, bool>>[].obs;
   final table = <List<String>>[].obs;
 
   void query() async {
@@ -121,7 +122,7 @@ class QueryLogic extends GetxController with L {
         (await dio.get(Api.route(route.name))).data;
 
     if (infoR.isEmpty) {
-      basic.value = '无查询结果';
+      basic.value = '查不到……';
       return;
     }
 
@@ -133,7 +134,8 @@ ${infoR['runtime']}    间隔${infoR['interval']}分钟
 
     final List<dynamic> firstR =
         (await dio.get(Api.routeFirst(route.fullName))).data;
-    th.value = firstR.map((f) => stationMap[f[0] as String]!).toList();
+    th.value =
+        firstR.map((f) => Tuple2(stationMap[f[0] as String]!, false)).toList();
     final List<dynamic> stepsR =
         (await dio.get(Api.routeSteps(route.fullName))).data;
     table.value = stepsR
@@ -158,38 +160,41 @@ ${infoR['runtime']}    间隔${infoR['interval']}分钟
   Future<void> queryStation(Station station) async {
     final List<dynamic> firstR =
         (await dio.get(Api.stationFirst(station.id))).data;
-    th.value = firstR.map((f) => Route.fromFullName(f[0] as String)).toList();
+    th.value = firstR
+        .map((f) => Tuple2(Route.fromFullName(f[0] as String), false))
+        .toList();
+
     final tmp =
         List.generate(3, (_) => firstR.map((_) => '').toList()).toList();
     for (int i = 0; i != firstR.length; i++) {
       final List<dynamic> stepsR =
           (await dio.get(Api.routeSteps(firstR[i][0]))).data;
-      final List<int> tmpList = stepsR
-          .map((s) => (firstR[i][1].toInt() + s - 60 * 24 * 3) as int)
-          .toList()
-        ..addAll(
-            stepsR.map((s) => (firstR[i][1].toInt() + s - 60 * 24 * 2) as int))
-        ..addAll(stepsR.map((s) => (firstR[i][1].toInt() + s - 60 * 24) as int))
-        ..addAll(stepsR.map((s) => (firstR[i][1].toInt() + s) as int))
-        ..addAll(stepsR.map((s) => (firstR[i][1].toInt() + s + 60 * 24) as int))
-        ..addAll(
-            stepsR.map((s) => (firstR[i][1].toInt() + s + 60 * 24 * 2) as int))
-        ..addAll(
-            stepsR.map((s) => (firstR[i][1].toInt() + s + 60 * 24 * 3) as int));
+      final tmpList = <int>[];
+      for (var days = -3; days <= 3; days++) {
+        tmpList.addAll(
+          stepsR.map((s) => (firstR[i][1].toInt() + s + 60 * 24 * days) as int),
+        );
+      }
       final nowV = now.value!.hour * 60 + now.value!.minute;
       final lb = lowerBound(tmpList, nowV);
-      final v0 = tmpList[lb] - nowV,
-          v1 = tmpList[lb + 1] - nowV,
-          v2 = tmpList[lb + 2] - nowV;
-      tmp[0][i] = v0 == 0
-          ? '【即将到达】'
-          : v0 <= 5
-              ? '【$v0 分钟】'
-              : '$v0 分钟';
-      tmp[1][i] = '$v1 分钟';
-      tmp[2][i] = '$v2 分钟';
+
+      final v = List.generate(3, (j) => tmpList[lb + j] - nowV);
+      for (var j = 0; j != 3; j++) {
+        tmp[j][i] = _m2s(v[j]);
+      }
+      if (v[0] <= 5) th[i] = th[i].withItem2(true);
     }
     table.value = tmp;
+  }
+
+  static String _m2s(int m) {
+    if (m == 0) {
+      return '即将到达';
+    } else if (m < 60) {
+      return '${m}m';
+    } else {
+      return '${m ~/ 60}h${m % 60}m';
+    }
   }
 
   Future<void> queryPath(Data fromRaw, Data toRaw) async {
@@ -220,23 +225,26 @@ ${infoR['runtime']}    间隔${infoR['interval']}分钟
 
     var trCnt = 0, timeCnt = 0;
     var pre = r[1];
-    basic.value += '从 ${stationMap[r[0]]!.str} 出发，'
-        '乘 ${Route.fromFullName(r[1]).str}\n';
+    final buffer = StringBuffer();
+    buffer.write('从 ${stationMap[r[0]]!.str} 出发，');
+    buffer.writeln('乘 ${Route.fromFullName(r[1]).str}');
     for (int i = 4; i < r.length; i += 3) {
       final time = r[i - 2] as int, station = r[i - 1], route = r[i];
       timeCnt += time;
-      basic.value += '$time 分钟后到达 ${stationMap[station]!.str}\n';
+      buffer.writeln('$time 分钟后到达 ${stationMap[station]!.str}');
       if (route != pre) {
         trCnt++;
         pre = route;
-        basic.value += '换乘 ${Route.fromFullName(route).str}\n';
+        buffer.writeln('换乘 ${Route.fromFullName(route).str}');
       }
     }
-    basic.value +=
-        '${r[r.length - 2]} 分钟后到达 ${stationMap[r[r.length - 1]]!.str}\n\n';
-    timeCnt += r[r.length - 2] as int;
-    basic.value += (trCnt == 0 ? '直达' : '换乘 $trCnt 次') +
-        '，全程共 ${r.length ~/ 3} 站，$timeCnt 分钟。';
+    final time = r[r.length - 2] as int, station = r[r.length - 1];
+    timeCnt += time;
+    buffer.writeln('$time 分钟后到达 ${stationMap[station]!.str}');
+    buffer.writeln();
+    buffer.write(trCnt == 0 ? '直达' : '换乘 $trCnt 次');
+    buffer.write('，全程共 ${r.length ~/ 3} 站，$timeCnt 分钟。');
+    basic.value = buffer.toString();
   }
 
   Future<void> queryRouteRoute(Route r0, Route r1) async {
@@ -246,6 +254,7 @@ ${infoR['runtime']}    间隔${infoR['interval']}分钟
         .intersection(Set.of(v.map((e) => e[0])))
         .map((e) => stationMap[e]!.str)
         .join('\n');
+    if (basic.isEmpty) basic.value = '无重复站点';
   }
 }
 

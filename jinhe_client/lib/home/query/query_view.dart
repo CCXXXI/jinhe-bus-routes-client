@@ -96,10 +96,15 @@ class QueryWidget extends StatelessWidget {
                         dataRowHeight: 32,
                         columns: [
                           for (final d in logic.th)
-                            if (d is Station)
-                              DataColumn(label: CopyButton(d.zh, d.str))
-                            else
-                              DataColumn(label: CopyButton(d.str, d.str)),
+                            DataColumn(
+                              label: CopyButton(
+                                d.item1 is Station
+                                    ? (d.item1 as Station).zh
+                                    : d.item1.str,
+                                d.item1.str,
+                                d.item2,
+                              ),
+                            ),
                         ],
                         rows: [
                           for (final row in logic.table)
@@ -167,22 +172,33 @@ class MyAutocomplete extends StatelessWidget {
 
 class CopyButton extends StatelessWidget {
   final String text, data;
+  final bool highlight;
 
-  const CopyButton(this.text, this.data, {Key? key}) : super(key: key);
+  const CopyButton(this.text, this.data, this.highlight, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 1920,
       height: 1080,
-      child: OutlinedButton(
-        onPressed: () {
-          Clipboard.setData(ClipboardData(text: data));
-          Get.snackbar('已复制', data);
-        },
-        child: Text(text, textAlign: TextAlign.center),
-        style: OutlinedButton.styleFrom(padding: const EdgeInsets.all(0)),
-      ),
+      child: highlight
+          ? ElevatedButton(
+              onPressed: () {
+                Clipboard.setData(ClipboardData(text: data));
+                Get.snackbar('已复制', data);
+              },
+              child: Text(text, textAlign: TextAlign.center),
+              style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(0)),
+            )
+          : OutlinedButton(
+              onPressed: () {
+                Clipboard.setData(ClipboardData(text: data));
+                Get.snackbar('已复制', data);
+              },
+              child: Text(text, textAlign: TextAlign.center),
+              style: OutlinedButton.styleFrom(padding: const EdgeInsets.all(0)),
+            ),
     );
   }
 }

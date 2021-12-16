@@ -15,15 +15,17 @@ class StationLinkPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('统计站台连接'),
       ),
-      body: Center(
-        child: Obx(
-          () => logic.res.isEmpty
-              ? Loading()
-              : Text(
-                  logic.res.value,
-                  textAlign: TextAlign.center,
-                ),
-        ),
+      body: ListView(
+        children: [
+          Obx(
+            () => logic.res.isEmpty
+                ? Loading()
+                : Text(
+                    logic.res.value,
+                    textAlign: TextAlign.center,
+                  ),
+          ),
+        ],
       ),
     );
   }
