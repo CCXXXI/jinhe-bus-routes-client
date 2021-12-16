@@ -38,6 +38,7 @@ dependencies:
   freezed_annotation:
   data_table_2:
   day_night_time_picker:
+  tuple:
 
 dev_dependencies:
   flutter_test:
