@@ -90,7 +90,7 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "io.github.ccxxxi" "\0"
-            VALUE "FileDescription", "金河市公交线路查询客户端" "\0"
+            VALUE "FileDescription", "金河查" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "jinhe_client" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2021 io.github.ccxxxi. All rights reserved." "\0"
