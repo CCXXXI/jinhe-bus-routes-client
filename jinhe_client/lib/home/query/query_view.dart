@@ -71,36 +71,47 @@ class QueryWidget extends StatelessWidget {
                   .group(0)!),
             );
           }),
-          Obx(
-            () => Text(
-              logic.basic.value,
-              textAlign: TextAlign.center,
-            ),
-          ),
           Expanded(
             child: Obx(() {
               if (logic.th.isEmpty || logic.table.isEmpty) {
-                return const SizedBox();
-              } else {
-                return DataTable2(
-                  columnSpacing: 0,
-                  minWidth: logic.th.length * 64,
-                  dataRowHeight: 32,
-                  columns: [
-                    for (final d in logic.th)
-                      if (d is Station)
-                        DataColumn(label: CopyButton(d.zh, d.str))
-                      else
-                        DataColumn(label: CopyButton(d.str, d.str)),
+                return ListView(
+                  children: [
+                    Text(
+                      logic.basic.value,
+                      textAlign: TextAlign.center,
+                    ),
                   ],
-                  rows: [
-                    for (final row in logic.table)
-                      DataRow(
-                        cells: [
-                          for (final cell in row)
-                            DataCell(Center(child: Text(cell))),
+                );
+              } else {
+                return Column(
+                  children: [
+                    Text(
+                      logic.basic.value,
+                      textAlign: TextAlign.center,
+                    ),
+                    Expanded(
+                      child: DataTable2(
+                        columnSpacing: 0,
+                        minWidth: logic.th.length * 64,
+                        dataRowHeight: 32,
+                        columns: [
+                          for (final d in logic.th)
+                            if (d is Station)
+                              DataColumn(label: CopyButton(d.zh, d.str))
+                            else
+                              DataColumn(label: CopyButton(d.str, d.str)),
+                        ],
+                        rows: [
+                          for (final row in logic.table)
+                            DataRow(
+                              cells: [
+                                for (final cell in row)
+                                  DataCell(Center(child: Text(cell))),
+                              ],
+                            ),
                         ],
                       ),
+                    ),
                   ],
                 );
               }
