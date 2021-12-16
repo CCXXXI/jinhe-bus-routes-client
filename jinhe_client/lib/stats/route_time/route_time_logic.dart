@@ -14,7 +14,7 @@ class RouteTimeLogic extends GetxController {
 
   void getRes() async {
     final List<dynamic> r = (await dio.get(Api.routesTime)).data;
-    var buffer = StringBuffer();
+    final buffer = StringBuffer();
     for (final i in r) {
       buffer.writeln(Route.fromFullName(i[0]).str + '：单程 ${i[1]} 分钟');
     }

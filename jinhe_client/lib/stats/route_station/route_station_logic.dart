@@ -14,7 +14,7 @@ class RouteStationLogic extends GetxController {
 
   void getRes() async {
     final List<dynamic> r = (await dio.get(Api.routesStations)).data;
-    var buffer = StringBuffer();
+    final buffer = StringBuffer();
     for (final i in r) {
       buffer.writeln(Route.fromFullName(i[0]).str + ': ${i[1]}');
     }
