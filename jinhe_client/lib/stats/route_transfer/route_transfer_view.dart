@@ -17,7 +17,7 @@ class RouteTransferPage extends StatelessWidget {
         title: const Text('查询线路换乘'),
       ),
       body: Center(
-        child: ListView(
+        child: Column(
           children: [
             ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 800),
@@ -43,10 +43,16 @@ class RouteTransferPage extends StatelessWidget {
                 ],
               ),
             ),
-            Obx(
-              () => Text(
-                logic.res.value,
-                textAlign: TextAlign.center,
+            Expanded(
+              child: ListView(
+                children: [
+                  Obx(
+                    () => Text(
+                      logic.res.value,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

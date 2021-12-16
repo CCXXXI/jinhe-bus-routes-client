@@ -13,7 +13,7 @@ class StationLinkLogic extends GetxController {
 
   void getRes() async {
     final List<dynamic> r = (await dio.get(Api.stationsLinks)).data;
-    var buffer = StringBuffer();
+    final buffer = StringBuffer();
     for (final i in r) {
       buffer.writeln('${i[0]} → ${i[1]}: ${i[2]}条');
     }

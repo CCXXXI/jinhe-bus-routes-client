@@ -12,7 +12,7 @@ void main() {
   group('package info', () {
     test(
       'appName',
-      () => expect(appName, '金河市公交线路查询客户端'),
+      () => expect(appName, '金河查'),
     );
     test(
       'packageName',

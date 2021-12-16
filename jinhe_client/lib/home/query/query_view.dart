@@ -66,41 +66,59 @@ class QueryWidget extends StatelessWidget {
                   ),
                 );
               },
-              child: Text(RegExp(r'(?<=\().*(?=\))')
-                  .firstMatch(logic.now.string)!
-                  .group(0)!),
+              child: Text(
+                QueryLogic.t2s(
+                  logic.now.value!.hour * 60 + logic.now.value!.minute,
+                ),
+              ),
             );
           }),
-          Obx(
-            () => Text(
-              logic.basic.value,
-              textAlign: TextAlign.center,
-            ),
-          ),
           Expanded(
             child: Obx(() {
               if (logic.th.isEmpty || logic.table.isEmpty) {
-                return const SizedBox();
-              } else {
-                return DataTable2(
-                  columnSpacing: 0,
-                  minWidth: logic.th.length * 64,
-                  dataRowHeight: 32,
-                  columns: [
-                    for (final d in logic.th)
-                      if (d is Station)
-                        DataColumn(label: CopyButton(d.zh, d.str))
-                      else
-                        DataColumn(label: CopyButton(d.str, d.str)),
+                return ListView(
+                  children: [
+                    Text(
+                      logic.basic.value,
+                      textAlign: TextAlign.center,
+                    ),
                   ],
-                  rows: [
-                    for (final row in logic.table)
-                      DataRow(
-                        cells: [
-                          for (final cell in row)
-                            DataCell(Center(child: Text(cell))),
+                );
+              } else {
+                return Column(
+                  children: [
+                    Text(
+                      logic.basic.value,
+                      textAlign: TextAlign.center,
+                    ),
+                    Expanded(
+                      child: DataTable2(
+                        columnSpacing: 0,
+                        minWidth: logic.th.length * 64,
+                        dataRowHeight: 32,
+                        columns: [
+                          for (final d in logic.th)
+                            DataColumn(
+                              label: CopyButton(
+                                d.item1 is Station
+                                    ? (d.item1 as Station).zh
+                                    : d.item1.str,
+                                d.item1.str,
+                                d.item2,
+                              ),
+                            ),
+                        ],
+                        rows: [
+                          for (final row in logic.table)
+                            DataRow(
+                              cells: [
+                                for (final cell in row)
+                                  DataCell(Center(child: Text(cell))),
+                              ],
+                            ),
                         ],
                       ),
+                    ),
                   ],
                 );
               }
@@ -156,22 +174,33 @@ class MyAutocomplete extends StatelessWidget {
 
 class CopyButton extends StatelessWidget {
   final String text, data;
+  final bool highlight;
 
-  const CopyButton(this.text, this.data, {Key? key}) : super(key: key);
+  const CopyButton(this.text, this.data, this.highlight, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 1920,
       height: 1080,
-      child: OutlinedButton(
-        onPressed: () {
-          Clipboard.setData(ClipboardData(text: data));
-          Get.snackbar('已复制', data);
-        },
-        child: Text(text, textAlign: TextAlign.center),
-        style: OutlinedButton.styleFrom(padding: const EdgeInsets.all(0)),
-      ),
+      child: highlight
+          ? ElevatedButton(
+              onPressed: () {
+                Clipboard.setData(ClipboardData(text: data));
+                Get.snackbar('已复制', data);
+              },
+              child: Text(text, textAlign: TextAlign.center),
+              style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(0)),
+            )
+          : OutlinedButton(
+              onPressed: () {
+                Clipboard.setData(ClipboardData(text: data));
+                Get.snackbar('已复制', data);
+              },
+              child: Text(text, textAlign: TextAlign.center),
+              style: OutlinedButton.styleFrom(padding: const EdgeInsets.all(0)),
+            ),
     );
   }
 }
