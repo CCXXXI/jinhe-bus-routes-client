@@ -66,9 +66,11 @@ class QueryWidget extends StatelessWidget {
                   ),
                 );
               },
-              child: Text(RegExp(r'(?<=\().*(?=\))')
-                  .firstMatch(logic.now.string)!
-                  .group(0)!),
+              child: Text(
+                QueryLogic.t2s(
+                  logic.now.value!.hour * 60 + logic.now.value!.minute,
+                ),
+              ),
             );
           }),
           Expanded(

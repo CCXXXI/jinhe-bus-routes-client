@@ -139,14 +139,15 @@ ${infoR['runtime']}    间隔${infoR['interval']}分钟
     final List<dynamic> stepsR =
         (await dio.get(Api.routeSteps(route.fullName))).data;
     table.value = stepsR
-        .map((s) => firstR.map((f) {
-              int t = f[1].toInt() + s;
-              t %= 60 * 24;
-              final h = (t ~/ 60).toString().padLeft(2, '0');
-              final m = (t % 60).toString().padLeft(2, '0');
-              return '$h:$m';
-            }).toList())
+        .map((s) => firstR.map((f) => t2s(f[1].toInt() + s)).toList())
         .toList();
+  }
+
+  static String t2s(int t) {
+    t %= 60 * 24;
+    final h = (t ~/ 60).toString().padLeft(2, '0');
+    final m = (t % 60).toString().padLeft(2, '0');
+    return '$h:$m';
   }
 
   Future<void> queryStationGroup(StationGroup sg) async {
