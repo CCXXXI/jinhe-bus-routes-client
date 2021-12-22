@@ -7,8 +7,8 @@ import 'pangu.dart';
 // record them manually
 const appName = '金河查';
 const packageName = 'io.github.ccxxxi.jinhe_client';
-const version = '1.3.0';
-const buildNumber = '17';
+const version = '1.3.1';
+const buildNumber = '18';
 
 const release = '$packageName@$version+$buildNumber';
 
